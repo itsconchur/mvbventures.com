@@ -1897,8 +1897,25 @@ figcaption {
 }
 
 .section_header23 {
-  background-color: var(--color-scheme-1--background);
-  color: var(--color-scheme-1--text);
+  background-color: var(--_primitives---brand--orange);
+  background-image: url('../images/hero-grid.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: var(--_primitives---colors--white);
+  padding-bottom: 6rem;
+}
+
+.section_header23 .button {
+  background-color: var(--_primitives---colors--white);
+  color: var(--_primitives---colors--neutral-darkest);
+  border-color: var(--_primitives---colors--white);
+}
+
+.section_header23 .button:hover {
+  background-color: var(--_primitives---colors--neutral-darkest);
+  color: var(--_primitives---colors--white);
+  border-color: var(--_primitives---colors--neutral-darkest);
 }
 
 .button-2 {
