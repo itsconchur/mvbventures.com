@@ -6220,15 +6220,15 @@ body.page-get-in-touch {
 }
 
 .contact-audience-split_panel--founders .contact-founders-cta_actions > .button.is-secondary {
-  border-color: var(--_primitives---colors--neutral-darkest);
-  color: var(--_primitives---colors--neutral-darkest);
+  border-color: var(--_primitives---colors--white);
+  color: var(--_primitives---colors--white);
   background-color: var(--_primitives---opacity--transparent);
 }
 
 .contact-audience-split_panel--founders .contact-founders-cta_actions > .button.is-secondary:hover {
-  background-color: color-mix(in srgb, var(--_primitives---colors--neutral-darkest) 12%, transparent);
-  border-color: var(--_primitives---colors--neutral-darkest);
-  color: var(--_primitives---colors--neutral-darkest);
+  background-color: color-mix(in srgb, var(--_primitives---colors--white) 12%, transparent);
+  border-color: var(--_primitives---colors--white);
+  color: var(--_primitives---colors--white);
 }
 
 .contact-founders-cta_eyebrow,
