@@ -1,5 +1,12 @@
 /* Pitch to Me — full-width on site tan; uses Webflow .form_input / .form_field-label */
 
+/* Fixed .navbar2_component is 70px tall; at ≤767px .padding-section-large top is only 4rem (64px). */
+@media screen and (max-width: 767px) {
+  .section_pitch-form .padding-section-large {
+    padding-top: calc(70px + 1.25rem);
+  }
+}
+
 /* Vertical rhythm: one gap between major blocks; inner label/hint tweaks below */
 .pitch-form.w-form {
   display: flex;
