@@ -5,14 +5,28 @@
   if (!root) return;
 
   var list = root.querySelector('.focus-tabs__list');
+  var viewport = root.querySelector('.focus-tabs__viewport');
   var mqDesktop = window.matchMedia('(min-width: 992px)');
+  var mqReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var isFirstActivate = true;
 
   var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
   var panels = Array.prototype.slice.call(root.querySelectorAll('[role="tabpanel"]'));
   if (!tabs.length || tabs.length !== panels.length) return;
 
+  function playViewportReveal() {
+    if (!viewport || mqReduceMotion.matches) return;
+    viewport.classList.remove('focus-tabs__viewport--reveal');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        viewport.classList.add('focus-tabs__viewport--reveal');
+      });
+    });
+  }
+
   function syncViewportMaxHeight() {
     if (!list) return;
+    root.style.removeProperty('--focus-tabs-viewport-offset');
     if (!mqDesktop.matches) {
       root.style.removeProperty('--focus-tabs-viewport-max');
       return;
@@ -71,6 +85,12 @@
     if (moveFocus) {
       tabs[index].focus({ preventScroll: true });
     }
+
+    if (viewport && !isFirstActivate) {
+      viewport.scrollTop = 0;
+      playViewportReveal();
+    }
+    isFirstActivate = false;
 
     scheduleSyncViewport();
   }

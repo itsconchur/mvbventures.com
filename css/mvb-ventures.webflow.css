@@ -5623,6 +5623,10 @@ figcaption {
   grid-template-columns: 1fr 1fr;
   height: 100vh;
   min-height: 600px;
+}
+
+/* Home hero only — Get in Touch uses a solid background (no line grid) */
+.hero-split:not(.hero-split--contact) {
   /* Horizontal stripes + colour split; verticals drawn on ::before / ::after. */
   background-image: repeating-linear-gradient(
       to bottom,
@@ -5643,8 +5647,8 @@ figcaption {
   background-repeat: repeat, no-repeat;
 }
 
-.hero-split::before,
-.hero-split::after {
+.hero-split:not(.hero-split--contact)::before,
+.hero-split:not(.hero-split--contact)::after {
   content: '';
   position: absolute;
   top: 0;
@@ -5663,11 +5667,11 @@ figcaption {
   background-position: 0 0;
 }
 
-.hero-split::before {
+.hero-split:not(.hero-split--contact)::before {
   left: 0;
 }
 
-.hero-split::after {
+.hero-split:not(.hero-split--contact)::after {
   right: 0;
 }
 
@@ -5720,7 +5724,7 @@ figcaption {
 }
 
 .hero-split_square {
-  border: 2px solid #000;
+  border: 1px solid #000;
   width: min(400px, calc(50vw - 5rem));
   max-height: calc(100vh - 160px);
   aspect-ratio: 1 / 1;
@@ -5800,6 +5804,9 @@ figcaption {
     grid-template-columns: 1fr;
     height: auto;
     min-height: 100vh;
+  }
+
+  .hero-split:not(.hero-split--contact) {
     background-image: repeating-linear-gradient(
         to bottom,
         var(--hero-grid-line) 0,
@@ -5826,8 +5833,8 @@ figcaption {
     background-repeat: repeat, repeat, no-repeat;
   }
 
-  .hero-split::before,
-  .hero-split::after {
+  .hero-split:not(.hero-split--contact)::before,
+  .hero-split:not(.hero-split--contact)::after {
     display: none;
   }
 
@@ -5848,5 +5855,330 @@ figcaption {
     aspect-ratio: auto;
     height: 100%;
     max-height: 300px;
+  }
+}
+
+/* Get in Touch — solid page background (no line grid) */
+body.page-get-in-touch {
+  background-color: var(--_primitives---brand--background-tan);
+}
+
+/* Contact hero: single column, centred copy + actions */
+
+.hero-split.hero-split--contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 5.5rem 3rem 3rem;
+}
+
+.get-in-touch_hero-inner {
+  max-width: 42rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.get-in-touch_hero-inner .heading-style-h2 {
+  margin-bottom: 0;
+}
+
+.get-in-touch_hero-lede {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 38rem;
+}
+
+.get-in-touch_hero-actions.button-group {
+  margin-top: 1.75rem;
+  justify-content: center;
+  gap: 0.75rem 1rem;
+}
+
+.get-in-touch_hero-actions .button {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8125rem;
+  padding: 0.85rem 1.65rem 0.7rem;
+}
+
+@media screen and (max-width: 767px) {
+  .hero-split.hero-split--contact {
+    padding: 4.5rem 2rem 2.5rem;
+  }
+}
+
+/* Get in Touch — testimonial band (quote + portrait) */
+.contact-testimonial_sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.contact-testimonial_surface {
+  position: relative;
+  isolation: isolate;
+  /* Slightly deeper than page tan so the band reads as its own surface */
+  background-color: color-mix(in srgb, var(--_primitives---brand--background-tan) 88%, black 12%);
+  background-image: none;
+}
+
+.contact-testimonial_layout {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  padding-top: clamp(3rem, 8vw, 5.5rem);
+  padding-bottom: clamp(3rem, 8vw, 5.5rem);
+}
+
+.contact-testimonial_copy {
+  flex: 1.15 1 18rem;
+  min-width: 0;
+  max-width: 42rem;
+}
+
+.contact-testimonial_wordmark-link {
+  display: inline-block;
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.contact-testimonial_wordmark {
+  display: block;
+  height: auto;
+  max-width: 5.5rem;
+}
+
+.contact-testimonial_blockquote {
+  border-left: none;
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.contact-testimonial_quote {
+  margin: 0 0 clamp(1.5rem, 3vw, 2rem);
+  font-family: var(--_typography---font-styles--heading);
+  font-size: clamp(1.35rem, 2.35vw, 2.125rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-scheme-1--text);
+}
+
+.contact-testimonial_footer {
+  font-family: var(--_typography---font-styles--body);
+}
+
+.contact-testimonial_name {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 0.15rem;
+}
+
+.contact-testimonial_meta {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--_primitives---colors--neutral-dark);
+}
+
+.contact-testimonial_figure {
+  margin: 0;
+  margin-left: auto;
+  flex: 0.85 1 16rem;
+  min-width: 0;
+  width: 100%;
+  max-width: 22rem;
+}
+
+.contact-testimonial_photo-wrap {
+  background-color: #5a6b3f;
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  box-sizing: border-box;
+}
+
+.contact-testimonial_photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+@media screen and (max-width: 991px) {
+  .contact-testimonial_layout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.5rem;
+  }
+
+  .contact-testimonial_figure {
+    margin-left: 0;
+    max-width: 18rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .contact-testimonial_figure {
+    max-width: min(18rem, 100%);
+  }
+}
+
+/* Get in Touch — founders / investors: full-viewport two-column split (no images) */
+.contact-audience-split {
+  color: var(--color-scheme-1--text);
+  box-sizing: border-box;
+}
+
+.contact-audience-split_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  min-height: 100vh;
+  min-height: 100dvh;
+  border: 2px solid var(--_primitives---colors--neutral-darkest);
+  box-sizing: border-box;
+}
+
+.contact-audience-split_panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+  border-right: 2px solid var(--_primitives---colors--neutral-darkest);
+  padding: clamp(1.75rem, 4vw, 3.25rem);
+}
+
+.contact-audience-split_panel:last-child {
+  border-right: none;
+}
+
+.contact-audience-split_panel-inner {
+  max-width: 36rem;
+  width: 100%;
+}
+
+.contact-audience-split_panel--founders {
+  background-color: var(--_primitives---brand--orange);
+  color: var(--_primitives---colors--neutral-darkest);
+}
+
+.contact-audience-split_panel--investors {
+  background-color: var(--_primitives---brand--background-tan);
+}
+
+.contact-audience-split_panel--founders .contact-founders-cta_eyebrow {
+  color: color-mix(in srgb, var(--_primitives---colors--neutral-darkest) 78%, transparent);
+}
+
+.contact-audience-split_panel--founders .contact-founders-cta_heading,
+.contact-audience-split_panel--founders .contact-founders-cta_body {
+  color: var(--_primitives---colors--neutral-darkest);
+}
+
+/* Primary CTA: white on orange panel */
+.contact-audience-split_panel--founders .contact-founders-cta_actions > .button.w-button:not(.is-secondary) {
+  background-color: var(--_primitives---colors--white);
+  color: var(--_primitives---colors--neutral-darkest);
+  border-color: var(--_primitives---colors--neutral-darkest);
+}
+
+.contact-audience-split_panel--founders .contact-founders-cta_actions > .button.w-button:not(.is-secondary):hover {
+  background-color: color-mix(in srgb, var(--_primitives---colors--white) 90%, var(--_primitives---colors--neutral-darkest) 10%);
+  border-color: var(--_primitives---colors--neutral-darkest);
+  color: var(--_primitives---colors--neutral-darkest);
+}
+
+.contact-audience-split_panel--founders .contact-founders-cta_actions > .button.is-secondary {
+  border-color: var(--_primitives---colors--neutral-darkest);
+  color: var(--_primitives---colors--neutral-darkest);
+  background-color: var(--_primitives---opacity--transparent);
+}
+
+.contact-audience-split_panel--founders .contact-founders-cta_actions > .button.is-secondary:hover {
+  background-color: color-mix(in srgb, var(--_primitives---colors--neutral-darkest) 12%, transparent);
+  border-color: var(--_primitives---colors--neutral-darkest);
+  color: var(--_primitives---colors--neutral-darkest);
+}
+
+.contact-founders-cta_eyebrow,
+.contact-investors-cta_eyebrow {
+  margin: 0 0 0.75rem;
+  font-family: var(--_typography---font-styles--heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--_primitives---colors--neutral-dark);
+}
+
+.contact-founders-cta_heading,
+.contact-investors-cta_heading {
+  margin: 0 0 1.25rem;
+  font-family: var(--_typography---font-styles--heading);
+  font-size: clamp(1.65rem, 2.8vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  max-width: none;
+}
+
+.contact-founders-cta_body,
+.contact-investors-cta_body {
+  margin: 0 0 1.75rem;
+  max-width: none;
+  line-height: 1.55;
+  color: var(--_primitives---colors--neutral-darkest);
+}
+
+.contact-founders-cta_actions.button-group,
+.contact-investors-cta_actions.button-group {
+  gap: 0.75rem 1rem;
+  flex-wrap: wrap;
+}
+
+.contact-founders-cta_actions .button,
+.contact-investors-cta_actions .button {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8125rem;
+  padding: 0.85rem 1.65rem 0.7rem;
+}
+
+@media screen and (max-width: 991px) {
+  .contact-audience-split_grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    border-width: 2px;
+  }
+
+  .contact-audience-split_panel {
+    border-right: none;
+    border-bottom: 2px solid var(--_primitives---colors--neutral-darkest);
+    min-height: min(50vh, 28rem);
+    justify-content: flex-start;
+    padding-top: clamp(2.25rem, 6vw, 3.5rem);
+    padding-bottom: clamp(2.25rem, 6vw, 3.5rem);
+  }
+
+  .contact-audience-split_panel:last-child {
+    border-bottom: none;
   }
 }

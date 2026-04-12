@@ -1,0 +1,391 @@
+/* Pitch to Me — full-width on site tan; uses Webflow .form_input / .form_field-label */
+
+@keyframes pitch-form-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section_pitch-form .max-width-large {
+  animation: pitch-form-enter 0.55s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section_pitch-form .max-width-large {
+    animation: none;
+  }
+}
+
+.pitch-form__intro p:last-child {
+  margin-bottom: 0;
+}
+
+.pitch-form__list {
+  padding-left: 1.25rem;
+  margin-top: 0;
+}
+
+.pitch-form__list li {
+  margin-bottom: 0.35rem;
+}
+
+.pitch-form__list li:last-child {
+  margin-bottom: 0;
+}
+
+.pitch-form__req {
+  color: var(--_primitives---brand--orange);
+  font-weight: 700;
+  margin-left: 0.15rem;
+}
+
+.pitch-form__hint {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.88;
+  line-height: 1.45;
+}
+
+.pitch-form__hint-list {
+  margin-top: 0.35rem;
+  margin-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  line-height: 1.45;
+}
+
+.pitch-form__row {
+  display: grid;
+  gap: 1rem 1.25rem;
+  margin-bottom: 0;
+}
+
+.pitch-form__row--2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.pitch-form__row--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media screen and (max-width: 991px) {
+  .pitch-form__row--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .pitch-form__row--2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pitch-form__dropzone {
+  border: 1px dashed var(--_primitives---colors--neutral-darkest);
+  padding: 2rem 1.25rem;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    border-style 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+  background-color: var(--_primitives---colors--white);
+}
+
+.pitch-form__dropzone:hover,
+.pitch-form__dropzone.is-dragover {
+  border-style: solid;
+  border-color: var(--_primitives---brand--orange);
+  box-shadow: inset 0 0 0 1px var(--_primitives---brand--orange);
+}
+
+.pitch-form__dropzone:focus {
+  outline: 2px solid var(--_primitives---brand--orange);
+  outline-offset: 2px;
+}
+
+.pitch-form__dropzone:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.pitch-form__dropzone:focus-visible {
+  outline: 2px solid var(--_primitives---brand--orange);
+  outline-offset: 2px;
+}
+
+.pitch-form__dropzone-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0 auto 0.75rem;
+  color: var(--_primitives---colors--neutral-darkest);
+}
+
+.pitch-form__dropzone-text {
+  margin: 0;
+  color: var(--color-scheme-1--text);
+}
+
+.pitch-form__browse {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 600;
+  color: var(--_primitives---brand--orange);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.pitch-form__browse:hover {
+  color: var(--_primitives---brand--dark-orange);
+}
+
+.pitch-form__dropzone-file {
+  display: block;
+  margin-top: 0.65rem;
+  font-weight: 500;
+  word-break: break-word;
+  color: var(--color-scheme-1--text);
+}
+
+.pitch-form__fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.pitch-form__choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.pitch-form__choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--_primitives---colors--neutral-darkest);
+  background-color: var(--_primitives---colors--white);
+  transition:
+    border-color 0.12s ease,
+    background-color 0.12s ease;
+}
+
+.pitch-form__choice:hover {
+  border-color: var(--_primitives---brand--orange);
+}
+
+.pitch-form__choice:has(input:checked) {
+  background-color: color-mix(
+    in srgb,
+    var(--_primitives---brand--orange) 14%,
+    var(--_primitives---colors--white)
+  );
+}
+
+.pitch-form__choice input {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: 0.15rem;
+  accent-color: var(--_primitives---brand--orange);
+  flex-shrink: 0;
+}
+
+.pitch-form__choice-label {
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.pitch-form__error {
+  color: var(--_primitives---brand--dark-orange);
+  margin-top: 0.5rem;
+  min-height: 1.25rem;
+  font-weight: 500;
+}
+
+.pitch-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--_primitives---colors--neutral-darkest);
+}
+
+.pitch-form__reset {
+  text-decoration: underline;
+}
+
+.pitch-form__reset-icon {
+  display: inline-block;
+  margin-right: 0.15rem;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ——— Custom dropdown (native <select> stays for validation + submit) ——— */
+
+.pitch-form__select {
+  position: relative;
+  width: 100%;
+}
+
+.pitch-form__select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0;
+  border: 1px solid var(--_primitives---colors--neutral-darkest);
+  background-color: var(--_primitives---colors--white);
+  color: var(--color-scheme-1--text);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 0;
+  transition:
+    border-color 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.pitch-form__select-trigger:hover {
+  border-color: var(--_primitives---brand--orange);
+}
+
+.pitch-form__select.is-open .pitch-form__select-trigger {
+  border-color: var(--_primitives---brand--orange);
+  box-shadow: inset 0 0 0 1px var(--_primitives---brand--orange);
+}
+
+.pitch-form__select-trigger:focus {
+  outline: none;
+}
+
+.pitch-form__select-trigger:focus-visible {
+  outline: 2px solid var(--_primitives---brand--orange);
+  outline-offset: 2px;
+}
+
+.pitch-form__select-value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pitch-form__select-trigger.is-placeholder .pitch-form__select-value {
+  opacity: 0.5;
+}
+
+.pitch-form__select-chevron {
+  flex-shrink: 0;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  margin-bottom: 0.2rem;
+  transition: transform 0.15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pitch-form__select-chevron {
+    transition: none;
+  }
+}
+
+.pitch-form__select.is-open .pitch-form__select-chevron {
+  transform: rotate(225deg);
+  margin-bottom: -0.1rem;
+}
+
+.pitch-form__select-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 2px);
+  z-index: 40;
+  background: var(--_primitives---colors--white);
+  border: 1px solid var(--_primitives---colors--neutral-darkest);
+  box-shadow: 4px 10px 28px rgba(0, 0, 0, 0.14);
+  max-height: min(20rem, 55vh);
+  overflow: auto;
+}
+
+.pitch-form__select-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.2rem 0;
+}
+
+.pitch-form__select-group {
+  padding: 0.45rem 0.75rem 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  font-family: var(--_typography---font-styles--heading);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--_primitives---colors--neutral-dark);
+  background-color: color-mix(
+    in srgb,
+    var(--_primitives---brand--background-tan) 55%,
+    var(--_primitives---colors--white)
+  );
+}
+
+.pitch-form__select-option {
+  padding: 0.45rem 0.85rem;
+  margin: 0;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  outline: none;
+}
+
+.pitch-form__select-option:hover,
+.pitch-form__select-option.is-focused {
+  background-color: color-mix(
+    in srgb,
+    var(--_primitives---brand--orange) 16%,
+    var(--_primitives---colors--white)
+  );
+}
+
+.pitch-form__select-option[aria-selected="true"] {
+  font-weight: 600;
+  background-color: color-mix(
+    in srgb,
+    var(--_primitives---brand--orange) 28%,
+    var(--_primitives---colors--white)
+  );
+}
