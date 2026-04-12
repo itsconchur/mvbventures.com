@@ -5604,3 +5604,249 @@ figcaption {
   font-style: normal;
   font-display: swap;
 }
+
+/* ============================================
+   HERO SPLIT — full-viewport two-panel hero
+   ============================================ */
+
+.hero-split {
+  /* Pure CSS grid: faint lines @ 6% black. Horizontal pitch fixed; verticals are
+     split per half-column so repeat lines land exactly on the centre seam. */
+  --hero-grid-line: rgba(0, 0, 0, 0.06);
+  --hero-grid-cell: 55px;
+  /* Integer = vertical lines per half; 13 ≈ 55px at ~1430px wide (720/13). */
+  --hero-grid-half-cols: 13;
+  --hero-v-step: calc(100% / var(--hero-grid-half-cols));
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  min-height: 600px;
+  /* Horizontal stripes + colour split; verticals drawn on ::before / ::after. */
+  background-image: repeating-linear-gradient(
+      to bottom,
+      var(--hero-grid-line) 0,
+      var(--hero-grid-line) 1px,
+      transparent 1px,
+      transparent var(--hero-grid-cell)
+    ),
+    linear-gradient(
+      to right,
+      var(--_primitives---brand--orange) 0%,
+      var(--_primitives---brand--orange) 50%,
+      var(--_primitives---brand--background-tan) 50%,
+      var(--_primitives---brand--background-tan) 100%
+    );
+  background-size: auto, 100% 100%;
+  background-position: center, center;
+  background-repeat: repeat, no-repeat;
+}
+
+.hero-split::before,
+.hero-split::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--hero-grid-line) 0,
+    var(--hero-grid-line) 1px,
+    transparent 1px,
+    transparent var(--hero-v-step)
+  );
+  background-repeat: repeat;
+  background-position: 0 0;
+}
+
+.hero-split::before {
+  left: 0;
+}
+
+.hero-split::after {
+  right: 0;
+}
+
+.hero-split_panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5.5rem 3rem 3rem;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.hero-split_panel--left {
+  background-color: transparent;
+  border-right: 1px solid #000;
+}
+
+.hero-split_panel--right {
+  background-color: transparent;
+}
+
+.hero-split_panel--left .hero-split_square {
+  background-color: #fff;
+}
+
+.hero-split_panel--left .hero-split_heading,
+.hero-split_panel--left .hero-split_body {
+  color: #000;
+}
+
+.hero-split_panel--left .hero-split_body {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.hero-split_panel--left .hero-split_btn {
+  background-color: var(--_primitives---brand--orange);
+  color: #fff;
+  border-color: #000;
+}
+
+.hero-split_panel--left .hero-split_btn:hover {
+  background-color: var(--_primitives---brand--dark-orange);
+  border-color: var(--_primitives---brand--dark-orange);
+}
+
+.hero-split_panel--right .hero-split_square {
+  background-color: var(--_primitives---brand--orange);
+}
+
+.hero-split_square {
+  border: 2px solid #000;
+  width: min(400px, calc(50vw - 5rem));
+  max-height: calc(100vh - 160px);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+  padding: 2.25rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.hero-split_heading {
+  font-family: var(--_typography---font-styles--heading);
+  color: #fff;
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.hero-split_body {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin: 0;
+  flex: 0 1 auto;
+}
+
+.hero-split_btn {
+  display: inline-block;
+  background-color: #fff;
+  color: #000;
+  font-family: var(--_typography---font-styles--heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem 0.65rem;
+  border: 1px solid #000;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  align-self: flex-start;
+}
+
+.hero-split_btn:hover {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.hero-split_btn--alt {
+  background-color: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+
+.hero-split_btn--alt:hover {
+  background-color: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+@media screen and (max-width: 991px) {
+  .hero-split_square {
+    width: min(340px, calc(50vw - 3rem));
+    padding: 1.75rem;
+  }
+
+  .hero-split_heading {
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .hero-split {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 100vh;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        var(--hero-grid-line) 0,
+        var(--hero-grid-line) 1px,
+        transparent 1px,
+        transparent var(--hero-grid-cell)
+      ),
+      repeating-linear-gradient(
+        to right,
+        var(--hero-grid-line) 0,
+        var(--hero-grid-line) 1px,
+        transparent 1px,
+        transparent var(--hero-grid-cell)
+      ),
+      linear-gradient(
+        to bottom,
+        var(--_primitives---brand--orange) 0%,
+        var(--_primitives---brand--orange) 50%,
+        var(--_primitives---brand--background-tan) 50%,
+        var(--_primitives---brand--background-tan) 100%
+      );
+    background-size: auto, auto, 100% 100%;
+    background-position: center, center, center;
+    background-repeat: repeat, repeat, no-repeat;
+  }
+
+  .hero-split::before,
+  .hero-split::after {
+    display: none;
+  }
+
+  .hero-split_panel {
+    height: 50vh;
+    min-height: 360px;
+    padding: 4.5rem 2rem 2rem;
+  }
+
+  .hero-split_panel--left {
+    border-right: none;
+    border-bottom: 1px solid #000;
+  }
+
+  .hero-split_square {
+    width: min(320px, calc(100vw - 4rem));
+    max-height: none;
+    aspect-ratio: auto;
+    height: 100%;
+    max-height: 300px;
+  }
+}

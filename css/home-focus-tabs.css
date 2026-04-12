@@ -1,0 +1,266 @@
+/* Home — Our Thesis tabbed section (custom, outside Webflow export) */
+
+.section_focus-tabs {
+  background-color: #0a0a0a;
+  color: #fff;
+}
+
+.section_focus-tabs .focus-tabs__heading {
+  font-family: var(--_typography---font-styles--heading);
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
+  color: #fff;
+}
+
+.focus-tabs__deck-line {
+  margin: 0 0 2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #b0b0b0;
+}
+
+.focus-tabs__deck-accent {
+  display: inline-block;
+  margin-left: 0.25rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 4px;
+  background-color: var(--_primitives---brand--orange);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.focus-tabs {
+  --focus-tabs-viewport-max: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 1.5rem 2.5rem;
+  align-items: start;
+}
+
+.focus-tabs__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.focus-tabs__tab {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 1.125rem 1.25rem;
+  border: 2px solid transparent;
+  border-radius: 14px;
+  background-color: #161616;
+  color: #fff;
+  cursor: pointer;
+  font-family: var(--_typography---font-styles--body);
+  font-size: 1rem;
+  line-height: 1.45;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.focus-tabs__tab:hover {
+  background-color: #1f1f1f;
+}
+
+.focus-tabs__tab:focus-visible {
+  outline: 2px solid var(--_primitives---brand--orange);
+  outline-offset: 2px;
+}
+
+.focus-tabs__tab.is-active {
+  background-color: #1c1c1c;
+  border-color: var(--_primitives---brand--orange);
+}
+
+.focus-tabs__tab-title {
+  font-family: var(--_typography---font-styles--body);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.45rem;
+  color: #fff;
+}
+
+.focus-tabs__tab-summary {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #9a9a9a;
+}
+
+.focus-tabs__tab.is-active .focus-tabs__tab-summary {
+  color: #b5b5b5;
+}
+
+.focus-tabs__viewport {
+  position: relative;
+  border-radius: 14px;
+  max-height: var(--focus-tabs-viewport-max);
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #111;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+  scrollbar-width: thin;
+}
+
+.focus-tabs__viewport::-webkit-scrollbar {
+  width: 8px;
+}
+
+.focus-tabs__viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.focus-tabs__viewport::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.focus-tabs__panel {
+  display: block;
+}
+
+.focus-tabs__panel[hidden] {
+  display: none !important;
+}
+
+.focus-tabs__body--text {
+  padding: 1.25rem 1.35rem 1.35rem;
+  background: linear-gradient(180deg, #141414 0%, #101010 100%);
+}
+
+.focus-tabs__panel-title {
+  font-family: var(--_typography---font-styles--heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: #fff;
+}
+
+.focus-tabs__panel-subtitle {
+  font-family: var(--_typography---font-styles--body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 1rem 0 0.45rem;
+  color: var(--_primitives---brand--orange);
+}
+
+.focus-tabs__panel-text {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: #b8b8b8;
+}
+
+.focus-tabs__formula {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.15rem;
+  padding: 0.65rem 0;
+  border-top: 1px dashed rgba(255, 255, 255, 0.12);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+.focus-tabs__formula-row {
+  display: grid;
+  grid-template-columns: 6.75rem 1fr;
+  gap: 0.5rem 0.75rem;
+  align-items: start;
+  padding: 0.2rem 0;
+}
+
+.focus-tabs__formula-row--result {
+  padding-top: 0.45rem;
+  margin-top: 0.15rem;
+  border-top: 1px dashed rgba(238, 95, 25, 0.35);
+}
+
+.focus-tabs__formula-row--result .focus-tabs__formula-term {
+  color: var(--_primitives---brand--orange);
+}
+
+.focus-tabs__formula-term {
+  font-family: var(--_typography---font-styles--body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #e8e8e8;
+  line-height: 1.35;
+}
+
+.focus-tabs__formula-desc {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+.focus-tabs__formula-op {
+  display: none;
+}
+
+.focus-tabs__diligence {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.35rem 1rem;
+}
+
+.focus-tabs__diligence li {
+  margin: 0;
+  padding: 0.2rem 0 0.2rem 0.6rem;
+  border-left: 2px solid rgba(238, 95, 25, 0.45);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: #c8c8c8;
+}
+
+.focus-tabs__diligence strong {
+  color: #e4e4e4;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 600px) {
+  .focus-tabs__diligence {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .focus-tabs {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    --focus-tabs-viewport-max: none;
+  }
+
+  .focus-tabs__viewport {
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .focus-tabs__formula-row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focus-tabs__tab {
+    transition: none;
+  }
+}
