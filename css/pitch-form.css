@@ -1,5 +1,51 @@
 /* Pitch to Me — full-width on site tan; uses Webflow .form_input / .form_field-label */
 
+/* Vertical rhythm: one gap between major blocks; inner label/hint tweaks below */
+.pitch-form.w-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.375rem;
+}
+
+.pitch-form.w-form > h2.heading-style-h4 {
+  margin: 0;
+}
+
+/* Clearer break before “Let’s get to know you” (second section title) */
+.pitch-form.w-form > h2.heading-style-h4:nth-of-type(2) {
+  margin-top: 1.75rem;
+}
+
+.pitch-form.w-form > .form_field-wrapper,
+.pitch-form.w-form > .pitch-form__row,
+.pitch-form.w-form > .pitch-form__actions {
+  margin: 0 !important;
+}
+
+.pitch-form.w-form > .pitch-form__footnote {
+  margin: 0 !important;
+  margin-top: 0.25rem !important;
+}
+
+.pitch-form.w-form .form_field-wrapper .form_field-label {
+  margin-bottom: 0.45rem;
+}
+
+.pitch-form.w-form .pitch-form__fieldset > legend.form_field-label {
+  margin-bottom: 0.35rem;
+  padding: 0;
+}
+
+.pitch-form.w-form .pitch-form__fieldset > .pitch-form__hint:first-of-type {
+  margin-top: 0;
+}
+
+.pitch-form.w-form .pitch-form__fieldset > .pitch-form__hint-list {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
 @keyframes pitch-form-enter {
   from {
     opacity: 0;
@@ -45,22 +91,22 @@
 }
 
 .pitch-form__hint {
-  margin-top: 0.25rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 0.45rem;
   opacity: 0.88;
   line-height: 1.45;
 }
 
 .pitch-form__hint-list {
-  margin-top: 0.35rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.55rem;
   padding-left: 1.25rem;
   line-height: 1.45;
 }
 
 .pitch-form__row {
   display: grid;
-  gap: 1rem 1.25rem;
+  gap: 1.125rem 1.375rem;
   margin-bottom: 0;
 }
 
@@ -82,6 +128,14 @@
   .pitch-form__row--2 {
     grid-template-columns: 1fr;
   }
+
+  .pitch-form.w-form {
+    gap: 1.2rem;
+  }
+
+  .pitch-form.w-form > h2.heading-style-h4:nth-of-type(2) {
+    margin-top: 1.35rem;
+  }
 }
 
 .pitch-form__dropzone {
@@ -102,20 +156,6 @@
   border-style: solid;
   border-color: var(--_primitives---brand--orange);
   box-shadow: inset 0 0 0 1px var(--_primitives---brand--orange);
-}
-
-.pitch-form__dropzone:focus {
-  outline: 2px solid var(--_primitives---brand--orange);
-  outline-offset: 2px;
-}
-
-.pitch-form__dropzone:focus:not(:focus-visible) {
-  outline: none;
-}
-
-.pitch-form__dropzone:focus-visible {
-  outline: 2px solid var(--_primitives---brand--orange);
-  outline-offset: 2px;
 }
 
 .pitch-form__dropzone-icon {
@@ -146,10 +186,237 @@
   color: var(--_primitives---brand--dark-orange);
 }
 
+.pitch-form__dropzone-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border-radius: inherit;
+}
+
+.pitch-form__dropzone-empty:focus {
+  outline: none;
+}
+
+.pitch-form__dropzone-empty:focus-visible {
+  outline: 2px solid var(--_primitives---brand--orange);
+  outline-offset: 2px;
+}
+
+.pitch-form__dropzone:not(.has-file) .pitch-form__dropzone-filled {
+  display: none;
+}
+
+.pitch-form__dropzone.has-file {
+  border-style: solid;
+  border-color: color-mix(
+    in srgb,
+    var(--_primitives---brand--orange) 55%,
+    var(--_primitives---colors--neutral-darkest)
+  );
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--_primitives---brand--orange) 9%, var(--_primitives---colors--white)) 0%,
+    var(--_primitives---colors--white) 52%,
+    color-mix(in srgb, var(--_primitives---brand--background-tan) 40%, var(--_primitives---colors--white)) 100%
+  );
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--_primitives---brand--orange) 22%, transparent),
+    0 10px 28px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+}
+
+.pitch-form__dropzone.has-file:hover,
+.pitch-form__dropzone.has-file.is-dragover {
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--_primitives---brand--orange) 35%, transparent),
+    0 12px 32px rgba(0, 0, 0, 0.07);
+}
+
+.pitch-form__dropzone.has-file .pitch-form__dropzone-empty {
+  display: none;
+}
+
+.pitch-form__dropzone-filled {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  padding: 0.15rem 0;
+}
+
+.pitch-form__dropzone.has-file .pitch-form__dropzone-filled {
+  animation: pitch-form-upload-reveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pitch-form__upload-visual {
+  position: relative;
+  width: 4.5rem;
+  height: 5.25rem;
+  margin-bottom: 0.35rem;
+  color: var(--_primitives---colors--neutral-darkest);
+}
+
+.pitch-form__pdf-icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
+}
+
+.pitch-form__check-badge {
+  position: absolute;
+  right: -0.35rem;
+  bottom: -0.2rem;
+  width: 2.05rem;
+  height: 2.05rem;
+  border-radius: 50%;
+  background: var(--_primitives---colors--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.pitch-form__check-svg {
+  width: 100%;
+  height: 100%;
+  color: var(--_primitives---brand--orange);
+}
+
+.pitch-form__check-ring {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.pitch-form__check-path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.pitch-form__dropzone--celebrate .pitch-form__check-ring {
+  animation: pitch-form-ring-draw 0.45s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+
+.pitch-form__dropzone--celebrate .pitch-form__check-path {
+  animation: pitch-form-check-draw 0.42s cubic-bezier(0.45, 0, 0.2, 1) 0.2s forwards;
+}
+
+.pitch-form__dropzone--celebrate .pitch-form__upload-visual {
+  animation: pitch-form-pdf-settle 0.55s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+}
+
+@keyframes pitch-form-upload-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pitch-form-pdf-settle {
+  from {
+    opacity: 0;
+    transform: scale(0.88) rotate(-4deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes pitch-form-ring-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pitch-form-check-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pitch-form__dropzone.has-file .pitch-form__dropzone-filled {
+    animation: none;
+  }
+
+  .pitch-form__dropzone--celebrate .pitch-form__upload-visual {
+    animation: none;
+  }
+
+  .pitch-form__dropzone--celebrate .pitch-form__check-ring,
+  .pitch-form__dropzone--celebrate .pitch-form__check-path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+.pitch-form__upload-success-line {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  align-items: center;
+}
+
+.pitch-form__upload-success-title {
+  font-family: var(--_typography---font-styles--heading);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--_primitives---colors--neutral-darkest);
+}
+
+.pitch-form__upload-success-sub {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--_primitives---colors--neutral-dark);
+  max-width: 18rem;
+}
+
+.pitch-form__replace-deck {
+  margin-top: 0.25rem;
+  background: none;
+  border: none;
+  padding: 0.35rem 0.5rem;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--_primitives---brand--orange);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.pitch-form__replace-deck:hover {
+  color: var(--_primitives---brand--dark-orange);
+}
+
+.pitch-form__replace-deck:focus {
+  outline: none;
+}
+
+.pitch-form__replace-deck:focus-visible {
+  outline: 2px solid var(--_primitives---brand--orange);
+  outline-offset: 2px;
+}
+
 .pitch-form__dropzone-file {
   display: block;
-  margin-top: 0.65rem;
-  font-weight: 500;
+  margin-top: 0;
+  font-weight: 600;
   word-break: break-word;
   color: var(--color-scheme-1--text);
 }
@@ -164,8 +431,8 @@
 .pitch-form__choices {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  gap: 0.5625rem;
+  margin-top: 0.45rem;
 }
 
 .pitch-form__choice {
@@ -173,7 +440,7 @@
   align-items: flex-start;
   gap: 0.65rem;
   cursor: pointer;
-  padding: 0.5rem 0.75rem;
+  padding: 0.55rem 0.8rem;
   border: 1px solid var(--_primitives---colors--neutral-darkest);
   background-color: var(--_primitives---colors--white);
   transition:
@@ -208,8 +475,8 @@
 
 .pitch-form__error {
   color: var(--_primitives---brand--dark-orange);
-  margin-top: 0.5rem;
-  min-height: 1.25rem;
+  margin-top: 0.45rem;
+  min-height: 1.125rem;
   font-weight: 500;
 }
 
@@ -218,9 +485,9 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  margin-top: 1.5rem;
-  padding-top: 1.25rem;
+  gap: 1rem 1.25rem;
+  margin-top: 0.125rem;
+  padding-top: 1.5rem;
   border-top: 1px solid var(--_primitives---colors--neutral-darkest);
 }
 
@@ -388,4 +655,50 @@
     var(--_primitives---brand--orange) 28%,
     var(--_primitives---colors--white)
   );
+}
+
+.pitch-form__select-option.is-filtered-out,
+.pitch-form__select-group.is-filtered-out {
+  display: none !important;
+}
+
+.pitch-form__select-search-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 0.5rem 0.5rem 0.4rem;
+  border-bottom: 1px solid var(--_primitives---colors--neutral-darkest);
+  background-color: var(--_primitives---colors--white);
+}
+
+.pitch-form__select-search {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 2.5rem;
+  margin: 0;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--_primitives---colors--neutral-darkest);
+  border-radius: 0;
+  background: var(--_primitives---colors--white);
+  color: var(--color-scheme-1--text);
+  font-family: inherit;
+  font-size: 0.9375rem;
+}
+
+.pitch-form__select-search::placeholder {
+  color: var(--_primitives---opacity--neutral-darkest-60);
+  opacity: 1;
+}
+
+.pitch-form__select-search:focus {
+  outline: 2px solid var(--_primitives---brand--orange);
+  outline-offset: 1px;
+}
+
+.pitch-form__select-empty {
+  margin: 0;
+  padding: 0.85rem 0.75rem;
+  text-align: center;
+  color: var(--_primitives---colors--neutral-dark);
 }

@@ -1,19 +1,40 @@
 (function () {
-  var form = document.getElementById("company-inbound-form");
-  if (!form) return;
+  var pitchForm = document.getElementById("company-inbound-form");
 
   var dropzone = document.getElementById("pitch-deck-dropzone");
   var fileInput = document.getElementById("pitch-deck-file");
   var fileNameEl = document.getElementById("pitch-deck-filename");
   var browseBtn = document.getElementById("pitch-deck-browse");
+  var replaceBtn = document.getElementById("pitch-deck-replace");
+  var deckLive = document.getElementById("pitch-deck-live");
   var hearAboutError = document.getElementById("hear-about-error");
+  var emptyState = document.getElementById("pitch-deck-empty-state");
+
+  function runDeckCelebrate() {
+    if (!dropzone) return;
+    dropzone.classList.remove("pitch-form__dropzone--celebrate");
+    window.requestAnimationFrame(function () {
+      window.requestAnimationFrame(function () {
+        dropzone.classList.add("pitch-form__dropzone--celebrate");
+      });
+    });
+  }
 
   function setFileName() {
-    if (!fileInput || !fileNameEl) return;
+    if (!fileInput || !fileNameEl || !dropzone) return;
     if (fileInput.files && fileInput.files.length) {
-      fileNameEl.textContent = fileInput.files[0].name;
+      var name = fileInput.files[0].name;
+      fileNameEl.textContent = name;
+      dropzone.classList.add("has-file");
+      if (deckLive) {
+        deckLive.textContent =
+          "PDF attached: " + name + ". Deck uploaded and ready to submit.";
+      }
+      runDeckCelebrate();
     } else {
       fileNameEl.textContent = "";
+      dropzone.classList.remove("has-file", "pitch-form__dropzone--celebrate");
+      if (deckLive) deckLive.textContent = "";
     }
   }
 
@@ -25,17 +46,29 @@
     });
   }
 
+  if (replaceBtn && fileInput) {
+    replaceBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      fileInput.value = "";
+      setFileName();
+      fileInput.click();
+    });
+  }
+
   if (dropzone && fileInput) {
     dropzone.addEventListener("click", function () {
       fileInput.click();
     });
 
-    dropzone.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        fileInput.click();
-      }
-    });
+    if (emptyState && fileInput) {
+      emptyState.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          fileInput.click();
+        }
+      });
+    }
 
     ["dragenter", "dragover"].forEach(function (ev) {
       dropzone.addEventListener(ev, function (e) {
@@ -85,6 +118,30 @@
       tr.focus();
     }
   });
+
+  function populateCountrySelect(select) {
+    if (select.id !== "country" || !Array.isArray(window.MVB_PITCH_FORM_COUNTRIES)) return;
+    if (select.getAttribute("data-countries-built") === "1") return;
+    while (select.firstChild) {
+      select.removeChild(select.firstChild);
+    }
+    var ph = document.createElement("option");
+    ph.value = "";
+    ph.textContent = "Select…";
+    select.appendChild(ph);
+    var countries = window.MVB_PITCH_FORM_COUNTRIES;
+    for (var c = 0; c < countries.length; c++) {
+      var o = document.createElement("option");
+      o.value = countries[c];
+      o.textContent = countries[c];
+      select.appendChild(o);
+    }
+    var ot = document.createElement("option");
+    ot.value = "Other";
+    ot.textContent = "Other";
+    select.appendChild(ot);
+    select.setAttribute("data-countries-built", "1");
+  }
 
   function syncTriggerText(instance) {
     var sel = instance.select;
@@ -138,6 +195,65 @@
     return instance.list.querySelectorAll('li[role="option"]');
   }
 
+  function getVisibleOptionLis(instance) {
+    return Array.prototype.filter.call(getOptionLis(instance), function (li) {
+      return !li.classList.contains("is-filtered-out");
+    });
+  }
+
+  function applyFilter(instance) {
+    if (!instance.searchable || !instance.searchInput) return;
+    var q = instance.searchInput.value.trim().toLowerCase();
+    var allOpts = instance.list.querySelectorAll('li[role="option"]');
+    var i;
+    for (i = 0; i < allOpts.length; i++) {
+      var li = allOpts[i];
+      var val = li.getAttribute("data-value");
+      if (val === "" && q) {
+        li.classList.add("is-filtered-out");
+        continue;
+      }
+      if (!q) {
+        li.classList.remove("is-filtered-out");
+        continue;
+      }
+      var text = li.textContent.trim().toLowerCase();
+      if (text.indexOf(q) >= 0) {
+        li.classList.remove("is-filtered-out");
+      } else {
+        li.classList.add("is-filtered-out");
+      }
+    }
+    var groups = instance.list.querySelectorAll("li.pitch-form__select-group");
+    for (i = 0; i < groups.length; i++) {
+      var gh = groups[i];
+      var el = gh.nextElementSibling;
+      var anyBelow = false;
+      while (el && !el.classList.contains("pitch-form__select-group")) {
+        if (el.getAttribute("role") === "option" && !el.classList.contains("is-filtered-out")) {
+          anyBelow = true;
+          break;
+        }
+        el = el.nextElementSibling;
+      }
+      if (!q) {
+        gh.classList.remove("is-filtered-out");
+      } else if (anyBelow) {
+        gh.classList.remove("is-filtered-out");
+      } else {
+        gh.classList.add("is-filtered-out");
+      }
+    }
+    var visible = getVisibleOptionLis(instance);
+    var nonEmpty = 0;
+    for (i = 0; i < visible.length; i++) {
+      if (visible[i].getAttribute("data-value") !== "") nonEmpty++;
+    }
+    if (instance.emptyMsg) {
+      instance.emptyMsg.hidden = !(q && nonEmpty === 0);
+    }
+  }
+
   function focusOption(instance, li) {
     var lis = getOptionLis(instance);
     for (var i = 0; i < lis.length; i++) {
@@ -155,6 +271,16 @@
     instance.wrap.classList.add("is-open");
     instance.trigger.setAttribute("aria-expanded", "true");
     instance.panel.hidden = false;
+    if (instance.searchable && instance.searchInput) {
+      instance.searchInput.value = "";
+      applyFilter(instance);
+      if (instance.emptyMsg) instance.emptyMsg.hidden = true;
+      instance.list.scrollTop = 0;
+      window.requestAnimationFrame(function () {
+        instance.searchInput.focus();
+      });
+      return;
+    }
     var toFocus = instance.selectedLi || getOptionLis(instance)[0];
     window.requestAnimationFrame(function () {
       focusOption(instance, toFocus);
@@ -165,6 +291,11 @@
     instance.wrap.classList.remove("is-open");
     instance.trigger.setAttribute("aria-expanded", "false");
     instance.panel.hidden = true;
+    if (instance.searchable && instance.searchInput) {
+      instance.searchInput.value = "";
+      applyFilter(instance);
+    }
+    if (instance.emptyMsg) instance.emptyMsg.hidden = true;
     var lis = getOptionLis(instance);
     for (var i = 0; i < lis.length; i++) {
       lis[i].classList.remove("is-focused");
@@ -188,12 +319,23 @@
   }
 
   function moveFocus(instance, delta) {
-    var lis = Array.prototype.slice.call(getOptionLis(instance));
+    var lis = getVisibleOptionLis(instance);
     if (!lis.length) return;
     var active = document.activeElement;
     var idx = lis.indexOf(active);
-    if (idx < 0) idx = 0;
-    var next = Math.min(Math.max(0, idx + delta), lis.length - 1);
+    if (idx < 0) {
+      if (instance.searchable && active === instance.searchInput && delta > 0) {
+        focusOption(instance, lis[0]);
+        lis[0].scrollIntoView({ block: "nearest" });
+      }
+      return;
+    }
+    if (delta < 0 && idx === 0 && instance.searchable && instance.searchInput) {
+      instance.searchInput.focus();
+      return;
+    }
+    var next = idx + delta;
+    if (next < 0 || next >= lis.length) return;
     focusOption(instance, lis[next]);
     lis[next].scrollIntoView({ block: "nearest" });
   }
@@ -201,6 +343,8 @@
   function enhanceSelect(select) {
     if (select.closest(".pitch-form__select")) return;
     if (!select.classList.contains("is-select-input")) return;
+
+    populateCountrySelect(select);
 
     var wrap = document.createElement("div");
     wrap.className = "pitch-form__select";
@@ -214,11 +358,17 @@
     trigger.setAttribute("aria-expanded", "false");
     trigger.setAttribute("aria-autocomplete", "list");
 
-    var label = form.querySelector('label[for="' + select.id + '"]');
+    var ownerForm = select.closest("form");
+    var label =
+      ownerForm && select.id
+        ? ownerForm.querySelector('label[for="' + select.id + '"]')
+        : null;
     if (label) {
       if (!label.id) label.id = select.id + "-label";
       trigger.setAttribute("aria-labelledby", label.id);
     }
+
+    var searchable = select.hasAttribute("data-searchable");
 
     var valueEl = document.createElement("span");
     valueEl.className = "pitch-form__select-value";
@@ -239,6 +389,30 @@
     trigger.setAttribute("aria-controls", list.id);
     panel.appendChild(list);
 
+    var searchInput = null;
+    var emptyMsg = null;
+    if (searchable) {
+      var searchWrap = document.createElement("div");
+      searchWrap.className = "pitch-form__select-search-wrap";
+      searchInput = document.createElement("input");
+      searchInput.type = "search";
+      searchInput.className = "pitch-form__select-search form_input w-input";
+      searchInput.setAttribute(
+        "aria-label",
+        "Filter " + (label ? label.textContent.replace(/\s*\*+\s*/g, "").trim() : "options")
+      );
+      searchInput.setAttribute("autocomplete", "off");
+      searchInput.setAttribute("spellcheck", "false");
+      searchInput.placeholder = "Type to search…";
+      searchWrap.appendChild(searchInput);
+      panel.insertBefore(searchWrap, list);
+      emptyMsg = document.createElement("p");
+      emptyMsg.className = "pitch-form__select-empty text-size-small";
+      emptyMsg.hidden = true;
+      emptyMsg.textContent = "No countries match.";
+      panel.appendChild(emptyMsg);
+    }
+
     select.classList.add("pitch-form__select-native", "visually-hidden");
     select.setAttribute("aria-hidden", "true");
     select.setAttribute("tabindex", "-1");
@@ -257,18 +431,50 @@
       panel: panel,
       list: list,
       selectedLi: null,
+      searchable: searchable,
+      searchInput: searchInput,
+      emptyMsg: emptyMsg,
       close: function () {
         closeList(instance);
       },
       refresh: function () {
+        if (instance.searchable && instance.searchInput) {
+          instance.searchInput.value = "";
+        }
         buildList(instance);
+        applyFilter(instance);
         syncTriggerText(instance);
       },
     };
 
     buildList(instance);
+    applyFilter(instance);
     syncTriggerText(instance);
     wrap._pitchSelectInstance = instance;
+
+    if (searchable && searchInput) {
+      searchInput.addEventListener("input", function () {
+        applyFilter(instance);
+      });
+      searchInput.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          e.stopPropagation();
+          if (searchInput.value) {
+            searchInput.value = "";
+            applyFilter(instance);
+          } else {
+            closeList(instance);
+            trigger.focus();
+          }
+          return;
+        }
+        if (e.key === "ArrowDown") {
+          e.preventDefault();
+          var vis = getVisibleOptionLis(instance);
+          if (vis[0]) focusOption(instance, vis[0]);
+        }
+      });
+    }
 
     trigger.addEventListener("click", function (e) {
       e.preventDefault();
@@ -285,8 +491,8 @@
         if (!wrap.classList.contains("is-open")) {
           openList(instance);
           if (e.key === "ArrowUp") {
-            var all = getOptionLis(instance);
-            focusOption(instance, all[all.length - 1]);
+            var all = getVisibleOptionLis(instance);
+            if (all.length) focusOption(instance, all[all.length - 1]);
           }
         } else {
           moveFocus(instance, e.key === "ArrowDown" ? 1 : -1);
@@ -318,13 +524,13 @@
       }
       if (e.key === "Home") {
         e.preventDefault();
-        var first = getOptionLis(instance)[0];
+        var first = getVisibleOptionLis(instance)[0];
         if (first) focusOption(instance, first);
         return;
       }
       if (e.key === "End") {
         e.preventDefault();
-        var all = getOptionLis(instance);
+        var all = getVisibleOptionLis(instance);
         if (all.length) focusOption(instance, all[all.length - 1]);
         return;
       }
@@ -344,16 +550,16 @@
     });
   }
 
-  form.querySelectorAll("select.is-select-input").forEach(function (sel) {
+  document.querySelectorAll("form.pitch-form select.is-select-input").forEach(function (sel) {
     enhanceSelect(sel);
   });
 
-  if (form) {
-    form.addEventListener("reset", function () {
+  document.querySelectorAll("form.pitch-form").forEach(function (f) {
+    f.addEventListener("reset", function () {
       window.setTimeout(function () {
         setFileName();
-        if (hearAboutError) hearAboutError.textContent = "";
-        form.querySelectorAll(".pitch-form__select").forEach(function (wrap) {
+        if (hearAboutError && f === pitchForm) hearAboutError.textContent = "";
+        f.querySelectorAll(".pitch-form__select").forEach(function (wrap) {
           var native = wrap.querySelector("select.pitch-form__select-native");
           if (!native) return;
           var instance = wrap._pitchSelectInstance;
@@ -361,23 +567,26 @@
         });
       }, 0);
     });
-  }
-
-  form.addEventListener("submit", function (e) {
-    if (hearAboutError) hearAboutError.textContent = "";
-    var boxes = form.querySelectorAll('input[name="hear_about[]"]');
-    var any = false;
-    for (var i = 0; i < boxes.length; i++) {
-      if (boxes[i].checked) {
-        any = true;
-        break;
-      }
-    }
-    if (!any) {
-      e.preventDefault();
-      if (hearAboutError) {
-        hearAboutError.textContent = "Please select at least one option for how you heard about us.";
-      }
-    }
   });
+
+  if (pitchForm) {
+    pitchForm.addEventListener("submit", function (e) {
+      if (hearAboutError) hearAboutError.textContent = "";
+      var boxes = pitchForm.querySelectorAll('input[name="hear_about[]"]');
+      if (!boxes.length) return;
+      var any = false;
+      for (var i = 0; i < boxes.length; i++) {
+        if (boxes[i].checked) {
+          any = true;
+          break;
+        }
+      }
+      if (!any) {
+        e.preventDefault();
+        if (hearAboutError) {
+          hearAboutError.textContent = "Please select at least one option for how you heard about us.";
+        }
+      }
+    });
+  }
 })();

@@ -5610,13 +5610,12 @@ figcaption {
    ============================================ */
 
 .hero-split {
-  /* Pure CSS grid: faint lines @ 6% black. Horizontal pitch fixed; verticals are
-     split per half-column so repeat lines land exactly on the centre seam. */
+  /* Square grid: one cell size for horizontals (row pitch) and verticals per half
+     (column pitch = 50vw / N) so intersections form squares; centre seam stays a line. */
   --hero-grid-line: rgba(0, 0, 0, 0.06);
-  --hero-grid-cell: 55px;
-  /* Integer = vertical lines per half; 13 ≈ 55px at ~1430px wide (720/13). */
-  --hero-grid-half-cols: 13;
-  --hero-v-step: calc(100% / var(--hero-grid-half-cols));
+  /* Columns per orange / per tan half; higher = finer grid. */
+  --hero-grid-half-cols: 22;
+  --hero-grid-cell: calc(50vw / var(--hero-grid-half-cols));
   position: relative;
   isolation: isolate;
   display: grid;
@@ -5661,7 +5660,7 @@ figcaption {
     var(--hero-grid-line) 0,
     var(--hero-grid-line) 1px,
     transparent 1px,
-    transparent var(--hero-v-step)
+    transparent var(--hero-grid-cell)
   );
   background-repeat: repeat;
   background-position: 0 0;
@@ -5807,6 +5806,9 @@ figcaption {
   }
 
   .hero-split:not(.hero-split--contact) {
+    /* Stacked panels: full width — use same pitch from 100vw so cells stay square. */
+    --hero-grid-mobile-cols: 18;
+    --hero-grid-cell: calc(100vw / var(--hero-grid-mobile-cols));
     background-image: repeating-linear-gradient(
         to bottom,
         var(--hero-grid-line) 0,
@@ -5855,6 +5857,24 @@ figcaption {
     aspect-ratio: auto;
     height: 100%;
     max-height: 300px;
+  }
+}
+
+/* Home: hide fixed nav until the hero has fully scrolled off (matches Webflow medium nav ≤991px) */
+@media screen and (max-width: 991px) {
+  body.page-home .navbar2_component {
+    transform: translate3d(0, -100%, 0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  body.page-home .navbar2_component.is-home-nav-visible {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media screen and (max-width: 991px) and (prefers-reduced-motion: reduce) {
+  body.page-home .navbar2_component {
+    transition: none;
   }
 }
 
@@ -6051,7 +6071,6 @@ body.page-get-in-touch {
   align-items: stretch;
   min-height: 100vh;
   min-height: 100dvh;
-  border: 2px solid var(--_primitives---colors--neutral-darkest);
   box-sizing: border-box;
 }
 
@@ -6062,7 +6081,7 @@ body.page-get-in-touch {
   box-sizing: border-box;
   min-width: 0;
   min-height: 0;
-  border-right: 2px solid var(--_primitives---colors--neutral-darkest);
+  border-right: 1px solid var(--_primitives---colors--neutral-darkest);
   padding: clamp(1.75rem, 4vw, 3.25rem);
 }
 
@@ -6166,12 +6185,11 @@ body.page-get-in-touch {
   .contact-audience-split_grid {
     grid-template-columns: 1fr;
     min-height: auto;
-    border-width: 2px;
   }
 
   .contact-audience-split_panel {
     border-right: none;
-    border-bottom: 2px solid var(--_primitives---colors--neutral-darkest);
+    border-bottom: 1px solid var(--_primitives---colors--neutral-darkest);
     min-height: min(50vh, 28rem);
     justify-content: flex-start;
     padding-top: clamp(2.25rem, 6vw, 3.5rem);
