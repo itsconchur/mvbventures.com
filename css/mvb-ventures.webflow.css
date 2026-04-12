@@ -5843,7 +5843,8 @@ figcaption {
   .hero-split_panel {
     height: 50vh;
     min-height: 360px;
-    padding: 4.5rem 2rem 2rem;
+    padding-block: 2rem;
+    padding-inline: 2rem;
   }
 
   .hero-split_panel--left {
@@ -5853,10 +5854,103 @@ figcaption {
 
   .hero-split_square {
     width: min(320px, calc(100vw - 4rem));
-    max-height: none;
+    max-width: 100%;
     aspect-ratio: auto;
-    height: 100%;
-    max-height: 300px;
+    height: auto;
+    max-height: min(300px, 100%);
+    align-self: center;
+  }
+
+  /* First screen = stacked hero + scroll hint bar (pushes panels up; hint not inside header) */
+  .home-hero-region {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-hero-region .hero-split {
+    flex: 1 1 auto;
+    min-height: 0;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .home-hero-region .hero-split_panel {
+    height: auto;
+    min-height: 0;
+  }
+}
+
+/* Mobile-only cue below home hero panels (hidden on larger viewports) */
+.hero-scroll-hint {
+  display: none;
+}
+
+@keyframes hero-scroll-hint-arrow {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  45% {
+    transform: translateY(0.35rem);
+    opacity: 0.55;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .hero-scroll-hint {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    flex: 0 0 auto;
+    width: 100%;
+    margin: 0;
+    padding: 0.7rem 1.25rem calc(0.65rem + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid #000;
+    background-color: #0a0a0a;
+    color: #f5f2eb;
+    font-family: var(--_typography---font-styles--heading);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .hero-scroll-hint:hover {
+    background-color: #141414;
+    color: #fff;
+  }
+
+  .hero-scroll-hint:focus-visible {
+    outline: 2px solid var(--_primitives---brand--orange);
+    outline-offset: -2px;
+  }
+
+  .hero-scroll-hint__label {
+    line-height: 1.2;
+  }
+
+  .hero-scroll-hint__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--_primitives---brand--orange);
+    animation: hero-scroll-hint-arrow 1.45s ease-in-out infinite;
+  }
+
+  .hero-scroll-hint__arrow-svg {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .hero-scroll-hint__arrow {
+    animation: none;
   }
 }
 

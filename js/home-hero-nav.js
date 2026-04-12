@@ -2,7 +2,8 @@
   if (!document.body.classList.contains('page-home')) return;
 
   var nav = document.querySelector('.navbar2_component');
-  var hero = document.querySelector('header.hero-split');
+  var heroRegion = document.querySelector('.home-hero-region');
+  var hero = heroRegion || document.querySelector('header.hero-split');
   if (!nav || !hero) return;
 
   var mql = window.matchMedia('(max-width: 991px)');
