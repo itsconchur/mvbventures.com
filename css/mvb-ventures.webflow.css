@@ -6198,12 +6198,12 @@ body.page-get-in-touch {
 }
 
 .contact-audience-split_panel--founders .contact-founders-cta_eyebrow {
-  color: color-mix(in srgb, var(--_primitives---colors--neutral-darkest) 78%, transparent);
+  color: color-mix(in srgb, var(--_primitives---colors--white) 78%, transparent);
 }
 
 .contact-audience-split_panel--founders .contact-founders-cta_heading,
 .contact-audience-split_panel--founders .contact-founders-cta_body {
-  color: var(--_primitives---colors--neutral-darkest);
+  color: var(--_primitives---colors--white);
 }
 
 /* Primary CTA: white on orange panel */
