@@ -3705,6 +3705,10 @@ figcaption {
     grid-template-columns: 1fr;
   }
 
+  .button.layout299.second, .button.layout299.fourth {
+    border-left-style: solid;
+  }
+
   .team16_image-wrapper {
     height: 100%;
   }
