@@ -1,0 +1,266 @@
+/* Thesis page — Fund Criteria banner, Why Now, MVB funnel (matches design spec) */
+
+:root {
+  --thesis-dark: #0b0d11;
+}
+
+/* Full-width banner directly under hero */
+.section_thesis-fund-criteria-banner {
+  background-color: var(--thesis-dark);
+  color: #fff;
+}
+
+.thesis-fund-banner__inner {
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
+}
+
+@media screen and (min-width: 992px) {
+  .thesis-fund-banner__inner {
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
+  }
+}
+
+.thesis-fund-banner__panel {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  padding: 1.75rem 1.5rem 2rem;
+}
+
+.thesis-fund-banner__title {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.thesis-fund-banner__body p {
+  margin: 0 0 1.1rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.thesis-fund-banner__body p:last-child {
+  margin-bottom: 0;
+}
+
+.section_thesis-detail {
+  background-color: var(--thesis-dark);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Tighter top: sits directly under Fund Criteria banner */
+.section_thesis-detail .thesis-detail__section-inner {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+@media screen and (min-width: 992px) {
+  .section_thesis-detail .thesis-detail__section-inner {
+    padding-top: 2.5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.thesis-detail__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media screen and (min-width: 992px) {
+  .thesis-detail__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.75rem 2.5rem;
+    align-items: stretch;
+  }
+}
+
+.thesis-detail__col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.thesis-detail__panel {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 2px;
+  padding: 1.5rem 1.5rem 1.625rem;
+}
+
+.thesis-detail__panel .heading-style-h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.thesis-detail__body p,
+.thesis-detail__why-col p {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.thesis-detail__body p:last-child,
+.thesis-detail__why-col p:last-child {
+  margin-bottom: 0;
+}
+
+.thesis-detail__why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .thesis-detail__why-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Funnel: trapezoid + connector + notes */
+.thesis-detail__col-funnel {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.thesis-funnel__stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.15fr);
+  gap: 0.65rem 0.85rem;
+  align-items: center;
+  padding-bottom: 1.25rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.18);
+}
+
+.thesis-funnel__stage:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .thesis-funnel__stage {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+
+  .thesis-funnel__dash {
+    display: none;
+  }
+}
+
+.thesis-funnel__trap {
+  display: flex;
+  align-items: center;
+  min-height: 3.5rem;
+  padding: 0.85rem 1.1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #0b0e14;
+  box-sizing: border-box;
+}
+
+.thesis-funnel__trap--1 {
+  background-color: #f3a68f;
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+}
+
+.thesis-funnel__trap--2 {
+  background-color: #f9d6c9;
+  clip-path: polygon(0 0, 100% 0, 78% 100%, 0 100%);
+}
+
+.thesis-funnel__trap--3 {
+  background-color: #fdf1ec;
+  clip-path: polygon(0 0, 100% 0, 68% 100%, 0 100%);
+  min-height: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.thesis-funnel__dash {
+  width: 1.5rem;
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: 2rem;
+  position: relative;
+}
+
+.thesis-funnel__dash::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  border-left: 1px dashed rgba(255, 255, 255, 0.4);
+  transform: translateX(-50%);
+}
+
+.thesis-funnel__marker {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  margin-top: -5px;
+  background-color: #e85a2c;
+  z-index: 1;
+}
+
+.thesis-funnel__note {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  align-self: center;
+}
+
+.thesis-funnel__note p {
+  margin: 0 0 0.5rem;
+}
+
+.thesis-funnel__note p:last-child {
+  margin-bottom: 0;
+}
+
+.thesis-funnel__note ul {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.thesis-funnel__note li {
+  margin-bottom: 0.35rem;
+}
+
+.thesis-funnel__note li:last-child {
+  margin-bottom: 0;
+}
+
+.thesis-funnel__note--list-plain ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.thesis-funnel__note--list-plain li {
+  margin-bottom: 0.25rem;
+}
+
+.thesis-funnel__note--dense p {
+  margin-bottom: 0.4rem;
+  font-size: 0.8125rem;
+}
+
+.thesis-funnel__note strong {
+  font-weight: 600;
+  color: #fff;
+}

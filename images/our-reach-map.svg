@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="our-reach-map-title">
+  <title id="our-reach-map-title">Regional map placeholder</title>
+  <rect width="800" height="520" fill="#0b111d"/>
+  <text x="400" y="250" text-anchor="middle" fill="#3d4659" font-family="system-ui,sans-serif" font-size="18">Replace with your map SVG</text>
+  <text x="400" y="285" text-anchor="middle" fill="#2a3142" font-family="system-ui,sans-serif" font-size="13">(images/our-reach-map.svg)</text>
+</svg>

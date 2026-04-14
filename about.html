@@ -10,6 +10,8 @@
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/mvb-ventures.webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/thesis-funnel.css" rel="stylesheet" type="text/css">
+  <link href="css/lp-force-multipliers.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
@@ -23,6 +25,109 @@
   -moz-osx-font-smoothing: grayscale;
   -o-font-smoothing: antialiased;
 }
+
+  .section_adjacent-track {
+    background-color: var(--color-scheme-1--background);
+    color: var(--color-scheme-1--text);
+  }
+
+  .adjacent-track_intro {
+    max-width: 48rem;
+    margin-bottom: 2rem;
+  }
+
+  .adjacent-track_subhead {
+    font-family: var(--_typography---font-styles--code-style);
+    font-size: 0.875rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--_primitives---colors--neutral);
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .adjacent-track_layout {
+    display: grid;
+    grid-template-columns: 1fr minmax(220px, 340px) 1fr;
+    gap: 2rem 2.5rem;
+    align-items: center;
+    margin-top: 2.5rem;
+  }
+
+  .adjacent-track_col--right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .adjacent-track_stat {
+    border-top: 1px solid var(--_primitives---opacity--neutral-darkest-15);
+    padding-top: 1rem;
+  }
+
+  .adjacent-track_stat-label {
+    font-family: var(--_typography---font-styles--code-style);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--_primitives---brand--orange);
+    margin-bottom: 0.35rem;
+  }
+
+  .adjacent-track_stat-context {
+    font-size: 0.9375rem;
+    line-height: 1.45;
+    margin-bottom: 0.35rem;
+    max-width: 22rem;
+  }
+
+  .adjacent-track_stat-action {
+    font-size: 0.875rem;
+    color: var(--_primitives---colors--neutral-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .adjacent-track_stat-value {
+    font-family: var(--_typography---font-styles--heading);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.1;
+    font-weight: 400;
+    color: var(--_primitives---brand--orange);
+    margin: 0;
+  }
+
+  .adjacent-track_visual {
+    justify-self: center;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .adjacent-track_visual-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .adjacent-track_footnote {
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--_primitives---colors--neutral);
+    margin-top: 2.5rem;
+    margin-bottom: 0;
+    max-width: 40rem;
+  }
+
+  @media screen and (max-width: 991px) {
+    .adjacent-track_layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .adjacent-track_visual {
+      order: -1;
+      max-width: 280px;
+    }
+  }
 </style>
   <!--  Google tag (gtag.js)  -->
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-B1PSV73WYL"></script>
@@ -41,7 +146,7 @@
         <nav role="navigation" id="w-node-ce453b1e-d964-48bd-5da9-c10c7d017085-7d017081" class="navbar2_menu is-page-height-tablet w-nav-menu">
           <a href="about.html" aria-current="page" class="navbar2_link w-nav-link w--current">Thesis</a>
           <a href="team.html" class="navbar2_link w-nav-link">Team</a>
-          <a href="lps-investors-contact-form.html" class="navbar2_link w-nav-link">Limited Partners</a>
+          <a href="limited-partners.html" class="navbar2_link w-nav-link">Limited Partners</a>
           <a href="invest-in-me-form.html" class="navbar2_link w-nav-link">Pitch to Me</a>
           <div data-delay="200" data-hover="true" data-w-id="ce453b1e-d964-48bd-5da9-c10c7d01708e" class="navbar2_menu-dropdown w-dropdown">
             <nav class="navbar2_dropdown-list w-dropdown-list">
@@ -115,6 +220,82 @@
           </div>
         </div>
       </section>
+      <section class="section_thesis-fund-criteria-banner text-color-white" aria-labelledby="thesis-fund-criteria-heading">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="thesis-fund-banner__inner">
+              <div class="thesis-fund-banner__panel">
+                <h2 class="heading-style-h2 thesis-fund-banner__title" id="thesis-fund-criteria-heading">Fund Criteria</h2>
+                <div class="thesis-fund-banner__body">
+                  <p>We lead $1M pre-seed/seed rounds behind founders with a resilient founding team, demonstrating deep sector knowledge and experience and who prioritize revenue-quality signals and repeatable distribution over hype.</p>
+                  <p>Product matters, but we back teams building the earliest version of a complete business system with customer, pricing, delivery, and GTM, before scaling.</p>
+                  <p>We avoid &lsquo;noise-driven&rsquo; companies that optimize for hype, fundraising momentum, or product perfection without a path to customers.</p>
+                  <p>Asymmetric bets, disciplined sizing, relentless focus on risk-adjusted alpha and clear tenets of Alpha first. Fees second. Ego never.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_thesis-detail text-color-white" aria-label="Why now and investment process">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="thesis-detail__section-inner">
+              <div class="thesis-detail__grid">
+                <div class="thesis-detail__col-left">
+                  <article class="thesis-detail__panel" aria-labelledby="thesis-why-now-heading">
+                    <h2 id="thesis-why-now-heading" class="heading-style-h4">Why Now</h2>
+                    <div class="thesis-detail__why-grid">
+                      <div class="thesis-detail__why-col">
+                        <p>The market is loud, crowded, and reflexively hype-driven, exactly the conditions that punish both founders and LPs who are trying to compound capital with discipline.</p>
+                        <p>In 2026, the advantage shifts away from &lsquo;who can ship an MVP fastest&rsquo; and toward &lsquo;who can become a real business earliest.&rsquo; That&rsquo;s the gap: accelerators and incubators still optimize for demos, not durability.</p>
+                      </div>
+                      <div class="thesis-detail__why-col">
+                        <p>LPs are fatigued by the noise because the noise is expensive: overfunded stories, underbuilt businesses, and portfolios that require perfect market timing to work.</p>
+                        <p>Our fund is positioned for this moment because we&rsquo;re explicitly built to underwrite fundamentals in an environment where fundamentals are back in charge.</p>
+                        <p>In a market overwhelmed by MVPs and hype, we back minimal viable businesses, because in 2026, durable fundamentals are the new unfair advantage.</p>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="thesis-detail__col-funnel">
+                  <div class="thesis-funnel__stage">
+                    <div class="thesis-funnel__trap thesis-funnel__trap--1">MVB Framework</div>
+                    <div class="thesis-funnel__dash" aria-hidden="true"><span class="thesis-funnel__marker"></span></div>
+                    <div class="thesis-funnel__note">
+                      <p>90 major deliverables within the programme to make founders deal-ready for evaluation.</p>
+                    </div>
+                  </div>
+                  <div class="thesis-funnel__stage">
+                    <div class="thesis-funnel__trap thesis-funnel__trap--2">DNA Level Due Diligence</div>
+                    <div class="thesis-funnel__dash" aria-hidden="true"><span class="thesis-funnel__marker"></span></div>
+                    <div class="thesis-funnel__note thesis-funnel__note--list-plain">
+                      <ul>
+                        <li>Team</li>
+                        <li>Financial Model</li>
+                        <li>Technology</li>
+                        <li>GTM</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="thesis-funnel__stage">
+                    <div class="thesis-funnel__trap thesis-funnel__trap--3">Investment Committee 4.0</div>
+                    <div class="thesis-funnel__dash" aria-hidden="true"><span class="thesis-funnel__marker"></span></div>
+                    <div class="thesis-funnel__note thesis-funnel__note--dense">
+                      <p><strong>IC Memo</strong> [2&ndash;4 pages]</p>
+                      <p>Thesis, bets, milestones, risks, pricing logic, ownership math, terms rationale</p>
+                      <p><strong>Terms blueprint</strong> [one page]</p>
+                      <p>Instrument, price/cap, option pool assumptions, governance, pro-rata, rights</p>
+                      <p><strong>Milestone plan + reporting cadence</strong></p>
+                      <p>What we expect by month 3/6/12 and what the company reports</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section class="section_layout192">
         <div class="padding-global">
           <div class="container-large">
@@ -136,6 +317,140 @@
           </div>
         </div>
       </section>
+      <section class="section_adjacent-track" aria-labelledby="adjacent-track-heading">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-large">
+              <div class="margin-bottom margin-xsmall">
+                <div class="text-style-tagline">Partner experience</div>
+              </div>
+              <h2 id="adjacent-track-heading" class="heading-style-h2">Adjacent Track Record</h2>
+              <div class="adjacent-track_intro">
+                <p class="text-size-medium">Our partners, each a seasoned entrepreneur with a blend of tech, product, programme management and financial acumen, hold an impressive track record as trusted custodians of capital, and in nurturing innovative companies to become industry pacesetters and driving exponential growth.</p>
+                <p class="adjacent-track_subhead">Track record of assets managed / supported*</p>
+              </div>
+              <div class="adjacent-track_layout">
+                <div class="adjacent-track_col adjacent-track_col--left">
+                  <article class="adjacent-track_stat">
+                    <p class="adjacent-track_stat-label">Fund manager</p>
+                    <p class="adjacent-track_stat-action">AUM (assets under management)</p>
+                    <p class="adjacent-track_stat-value">€12 billion</p>
+                  </article>
+                </div>
+                <div class="adjacent-track_visual" role="img" aria-label="From €12 billion to €2+ trillion: scale of assets managed and supported">
+                  <svg class="adjacent-track_visual-svg" viewBox="0 0 320 360" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="160" cy="180" r="148" fill="#f0e4d4"/>
+                    <path d="M160 92c-48 28-78 72-78 118 0 46 30 90 78 118 48-28 78-72 78-118 0-46-30-90-78-118z" fill="#2c2c2c"/>
+                    <text x="160" y="168" text-anchor="middle" fill="#fdf4e6" font-family="system-ui, sans-serif" font-size="20" font-weight="600">€2+ trillion</text>
+                    <path d="M160 248v48h-12v16h24v-16h-12v-48z" fill="#2c2c2c"/>
+                    <ellipse cx="112" cy="278" rx="16" ry="20" fill="#6b4a32" transform="rotate(-22 112 278)"/>
+                    <text x="160" y="312" text-anchor="middle" fill="#1a1a1a" font-family="system-ui, sans-serif" font-size="14" font-weight="600">€12 billion</text>
+                  </svg>
+                </div>
+                <div class="adjacent-track_col adjacent-track_col--right">
+                  <article class="adjacent-track_stat">
+                    <p class="adjacent-track_stat-label">International Fund for Ireland</p>
+                    <p class="adjacent-track_stat-context">IFI — reconciliation and development</p>
+                    <p class="adjacent-track_stat-action">Raised</p>
+                    <p class="adjacent-track_stat-value">€326 million</p>
+                  </article>
+                  <article class="adjacent-track_stat">
+                    <p class="adjacent-track_stat-label">Fund administration support</p>
+                    <p class="adjacent-track_stat-action">Support management of</p>
+                    <p class="adjacent-track_stat-value">€2 trillion+</p>
+                  </article>
+                </div>
+              </div>
+              <p class="adjacent-track_footnote">* Figures reflect aggregate experience across partner backgrounds prior to and alongside MVB Ventures; they are illustrative and not a projection of future fund performance.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_lp-force-multipliers" aria-labelledby="lp-force-multipliers-heading">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-large">
+              <header class="lp-fm__header">
+                <p class="lp-fm__eyebrow">MVB Ventures</p>
+                <h2 id="lp-force-multipliers-heading" class="lp-fm__title">A series of force multipliers</h2>
+              </header>
+              <ul class="lp-fm__grid">
+                <li>
+                  <article class="lp-fm__card">
+                    <h3 class="lp-fm__card-title">Pro bono framework</h3>
+                    <p class="lp-fm__card-body">Doesn't just generate leads; it manufactures readiness. We convert founders from "idea/MVP" to Minimal Viable Business with repeatable GTM, basic unit economics, and reporting discipline, so the fund is investing after a value-creation step MVB controls.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="lp-fm__card">
+                    <h3 class="lp-fm__card-title">Accelerator &amp; incubator network</h3>
+                    <p class="lp-fm__card-body">We see companies months before most VCs do. Being embedded gets us in stealth, before valuation inflation and crowded rounds. Programmes produce cohorts on a schedule. That creates a predictable cadence of opportunities.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="lp-fm__card">
+                    <h3 class="lp-fm__card-title">Tranche design unlocking capital stacking</h3>
+                    <p class="lp-fm__card-body">Isn't just risk control—it's a funding amplifier. We intentionally structure milestones to unlock grants and accelerator capital, so a €1m fund commitment targets €1.5m+ total capital into the company without extra dilution.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="lp-fm__card">
+                    <h3 class="lp-fm__card-title">DNA-level due diligence</h3>
+                    <p class="lp-fm__card-body">Done at "operator depth." That creates:</p>
+                    <ul class="lp-fm__list">
+                      <li>Fewer hidden landmines,</li>
+                      <li>Faster post-investment execution,</li>
+                      <li>A repeatable standard that co-investors and later-stage funds trust.</li>
+                    </ul>
+                  </article>
+                </li>
+                <li>
+                  <article class="lp-fm__card">
+                    <h3 class="lp-fm__card-title">Founder &amp; operator network</h3>
+                    <p class="lp-fm__card-body">Founder/operators open doors to design partners, pilots, and first paying customers. That turns diligence from opinion into proof. Networks create word-of-mouth deal flow, improve inbound quality, and make our pro bono programme and diligence model even more attractive.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="lp-fm__card">
+                    <h3 class="lp-fm__card-title">Fund manager operating system</h3>
+                    <p class="lp-fm__card-body">VCs learn bad news at quarterly board meetings. In real time, our model monitors:</p>
+                    <ul class="lp-fm__list">
+                      <li>P&amp;L / runway</li>
+                      <li>Sales pipeline health</li>
+                      <li>Cost drift</li>
+                      <li>Product / tech velocity</li>
+                    </ul>
+                    <p class="lp-fm__card-body">Roadmap-to-revenue alignment enables course correction weeks to months earlier.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="lp-fm__card">
+                    <h3 class="lp-fm__card-title">Two-channel flywheel marketing</h3>
+                    <p class="lp-fm__card-body">The split content strategy is powerful because it avoids diluted messaging:</p>
+                    <ul class="lp-fm__sublist">
+                      <li><strong>David:</strong> programme + founder value → deal-flow gravity</li>
+                      <li><strong>Martin:</strong> tech + investing + VC insights → founder &amp; LP credibility and inbound</li>
+                    </ul>
+                    <p class="lp-fm__card-body">This becomes a repeatable acquisition machine on both sides of the marketplace.</p>
+                  </article>
+                </li>
+                <li>
+                  <article class="lp-fm__card">
+                    <h3 class="lp-fm__card-title">Diligence package as a market / product</h3>
+                    <p class="lp-fm__card-body">Our "DNA report + tranche plan + risk register" can become the most trusted underwriting in the ecosystem. That attracts:</p>
+                    <ul class="lp-fm__list">
+                      <li>Co-investors,</li>
+                      <li>Accelerators,</li>
+                      <li>Other VCs who want our depth,</li>
+                      <li>Later-stage investors who value clean, structured data rooms.</li>
+                    </ul>
+                  </article>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
       <section class="section_cta27 text-color-white">
         <div class="padding-global">
           <div class="container-large">
@@ -151,7 +466,7 @@
                     </div>
                     <div class="margin-top margin-medium">
                       <div class="button-group is-center">
-                        <a href="lps-investors-contact-form.html" class="button is-alternate w-button">For LPs / Investors</a>
+                        <a href="limited-partners.html" class="button is-alternate w-button">For LPs / Investors</a>
                         <a href="invest-in-me-form.html" class="button is-secondary is-alternate w-button">For Startups / Scaleups</a>
                       </div>
                     </div>
@@ -174,7 +489,7 @@
                   <a href="#" id="w-node-_83ab71c2-9b56-9577-d7ab-386e6b4e11c8-6b4e11c2" class="footer7_logo-link w-nav-brand"><img width="96" loading="lazy" alt="" src="images/mvb-ventures-logo.svg" class="footer7_logo"></a>
                   <div class="w-layout-grid footer7_link-list">
                     <a href="team.html" class="footer7_link">Team</a>
-                    <a href="lps-investors-contact-form.html" class="footer7_link">LPs / Investors</a>
+                    <a href="limited-partners.html" class="footer7_link">LPs / Investors</a>
                     <a href="invest-in-me-form.html" class="footer7_link">Pitch to Me</a>
                     <a href="about.html" aria-current="page" class="footer7_link w--current">thesis</a>
                   </div>
