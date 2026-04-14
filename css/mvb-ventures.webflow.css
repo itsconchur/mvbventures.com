@@ -6014,6 +6014,8 @@ body.page-get-in-touch {
   margin-top: 1.75rem;
   justify-content: center;
   gap: 0.75rem 1rem;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .get-in-touch_hero-actions .button {
@@ -6021,6 +6023,8 @@ body.page-get-in-touch {
   letter-spacing: 0.06em;
   font-size: 0.8125rem;
   padding: 0.85rem 1.65rem 0.7rem;
+  width: 100%;
+  text-align: center;
 }
 
 @media screen and (max-width: 767px) {
@@ -6224,15 +6228,15 @@ body.page-get-in-touch {
 }
 
 .contact-audience-split_panel--founders .contact-founders-cta_actions > .button.is-secondary {
-  border-color: var(--_primitives---colors--neutral-darkest);
-  color: var(--_primitives---colors--neutral-darkest);
+  border-color: var(--_primitives---colors--white);
+  color: var(--_primitives---colors--white);
   background-color: var(--_primitives---opacity--transparent);
 }
 
 .contact-audience-split_panel--founders .contact-founders-cta_actions > .button.is-secondary:hover {
-  background-color: color-mix(in srgb, var(--_primitives---colors--neutral-darkest) 12%, transparent);
-  border-color: var(--_primitives---colors--neutral-darkest);
-  color: var(--_primitives---colors--neutral-darkest);
+  background-color: color-mix(in srgb, var(--_primitives---colors--white) 12%, transparent);
+  border-color: var(--_primitives---colors--white);
+  color: var(--_primitives---colors--white);
 }
 
 .contact-founders-cta_eyebrow,
