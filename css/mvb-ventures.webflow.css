@@ -2278,6 +2278,31 @@ figcaption {
 
 .section_cta27 {
   position: relative;
+  background-color: var(--_primitives---brand--orange);
+}
+
+.section_cta27 .button.is-alternate {
+  border-color: #fff;
+  background-color: #fff;
+  color: #0a0a0a;
+}
+
+.section_cta27 .button.is-alternate:hover {
+  border-color: #fff;
+  background-color: transparent;
+  color: #fff;
+}
+
+.section_cta27 .button.is-secondary.is-alternate {
+  border-color: #fff;
+  background-color: transparent;
+  color: #fff;
+}
+
+.section_cta27 .button.is-secondary.is-alternate:hover {
+  border-color: #fff;
+  background-color: #fff;
+  color: #0a0a0a;
 }
 
 .image-overlay-layer {

@@ -62,17 +62,9 @@ body.page-limited-partners {
 
 .lp-hero__inner {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-  align-items: end;
-}
-
-@media screen and (min-width: 900px) {
-  .lp-hero__inner {
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 4rem;
-  }
+  max-width: 56rem;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .lp-hero__eyebrow {
@@ -105,82 +97,136 @@ body.page-limited-partners {
   font-size: clamp(1rem, 1.6vw, 1.15rem);
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.55);
-  margin: 0;
+  margin: 0 auto;
   max-width: 34rem;
   opacity: 0;
   animation: lp-fade-up 0.7s 0.16s ease forwards;
 }
 
-.lp-hero__stat-card {
-  opacity: 0;
-  animation: lp-fade-up 0.7s 0.28s ease forwards;
+/* ── Track Record Banner (under the hero) ── */
+.lp-track-banner {
+  background: var(--_primitives---brand--orange, #ee5f19);
+  color: #fff8ef;
 }
 
-@media screen and (min-width: 900px) {
-  .lp-hero__stat-card {
-    justify-self: end;
-    max-width: 22rem;
-  }
+.lp-track-banner__inner {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  text-align: center;
 }
 
-.lp-hero__stat-card-inner {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
-  padding: 2rem 2.25rem;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-}
-
-.lp-hero__stat-label {
+.lp-track-banner__label {
   font-family: var(--_typography---font-styles--heading);
   font-size: 0.6875rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: rgba(255, 255, 255, 0.35);
-  margin: 0 0 1.25rem;
+  letter-spacing: 0.18em;
+  color: rgba(255, 248, 239, 0.78);
+  margin: 0 0 1.5rem;
 }
 
-.lp-hero__stat-row {
+.lp-track-banner__row {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  column-gap: clamp(1.25rem, 3.2vw, 2.75rem);
+  margin-bottom: 1.6rem;
+  text-align: left;
+}
+
+.lp-track-banner__from,
+.lp-track-banner__to {
   display: flex;
+  flex-direction: column;
+  gap: 0.05em;
+  font-family: var(--_typography---font-styles--heading);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+}
+
+.lp-track-banner__from {
+  color: rgba(45, 18, 4, 0.55);
+}
+
+.lp-track-banner__to {
+  color: #fff8ef;
+  text-shadow: 0 1px 0 rgba(120, 40, 0, 0.18);
+}
+
+.lp-track-banner__num {
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  display: inline-flex;
   align-items: baseline;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
 }
 
-.lp-hero__stat-from {
-  font-family: var(--_typography---font-styles--heading);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.2);
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
-  text-decoration-color: rgba(255, 255, 255, 0.12);
+.lp-track-banner__pct {
+  font-size: 0.78em;
+  margin-left: 0.04em;
+  font-weight: 600;
 }
 
-.lp-hero__stat-arrow {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.15);
+.lp-track-banner__word {
+  font-size: clamp(1.65rem, 3.6vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
-.lp-hero__stat-to {
-  font-family: var(--_typography---font-styles--heading);
-  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-  font-weight: 700;
+.lp-track-banner__asterisk {
+  font-size: 0.5em;
+  vertical-align: top;
   line-height: 1;
-  background: linear-gradient(135deg, #ff9a52 0%, #ee5f19 50%, #d14a0e 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  margin-left: 0.14em;
+  font-weight: 600;
+  position: relative;
+  top: 0.18em;
+  color: inherit;
 }
 
-.lp-hero__stat-footnote {
-  font-size: 0.75rem;
+.lp-track-banner__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 248, 239, 0.78);
+  padding-bottom: 0.6em;
+}
+
+.lp-track-banner__arrow svg {
+  display: block;
+}
+
+.lp-track-banner__footnote {
+  font-size: 0.8125rem;
   line-height: 1.55;
-  color: rgba(255, 255, 255, 0.3);
-  margin: 0;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 248, 239, 0.78);
+  margin: 0 auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 248, 239, 0.18);
+  max-width: 44rem;
+}
+
+.u-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media screen and (max-width: 540px) {
+  .lp-track-banner__row {
+    column-gap: 0.85rem;
+  }
+  .lp-track-banner__num {
+    font-size: clamp(2.1rem, 10vw, 2.8rem);
+  }
+  .lp-track-banner__word {
+    font-size: clamp(1.3rem, 6vw, 1.7rem);
+  }
 }
 
 @keyframes lp-fade-up {
@@ -602,8 +648,7 @@ body.page-limited-partners {
 @media (prefers-reduced-motion: reduce) {
   .lp-hero__eyebrow,
   .lp-hero__title,
-  .lp-hero__lede,
-  .lp-hero__stat-card {
+  .lp-hero__lede {
     animation: none;
     opacity: 1;
   }

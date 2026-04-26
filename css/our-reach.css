@@ -157,12 +157,12 @@
   }
 
   .our-reach__map-wrap {
-    min-height: 300px;
+    min-height: 440px;
   }
 
   .our-reach__map {
-    width: 340%;
-    left: -45%;
-    transform: translateY(-40%);
+    width: 235%;
+    left: -13%;
+    transform: translateY(-50%);
   }
 }

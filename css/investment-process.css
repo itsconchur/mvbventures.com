@@ -1,0 +1,424 @@
+/* Home — Investment Process (9-step heat-graded process map) */
+
+.section_investment-process {
+  background-color: #faf3ec;
+  color: #1a1d24;
+  position: relative;
+  overflow: hidden;
+}
+
+.section_investment-process::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 90% 8%, rgba(238, 95, 25, 0.08), transparent 55%),
+    radial-gradient(circle at 5% 95%, rgba(144, 58, 16, 0.06), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section_investment-process .padding-section-large {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────── */
+
+.invest-process__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: end;
+  gap: 1.25rem 3.5rem;
+  margin: 0 0 3rem;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px dashed rgba(144, 58, 16, 0.35);
+}
+
+.invest-process__eyebrow {
+  grid-column: 1 / -1;
+  margin: 0 0 0.4rem;
+  font-family: var(--_typography---font-styles--body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--_primitives---brand--orange);
+}
+
+.invest-process__heading {
+  margin: 0;
+  font-family: var(--_typography---font-styles--heading);
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  color: #0d0f14;
+}
+
+.invest-process__lede {
+  margin: 0;
+  font-family: var(--_typography---font-styles--body);
+  font-size: clamp(0.95rem, 1.2vw, 1.0625rem);
+  line-height: 1.6;
+  color: #4b4f57;
+  max-width: 32rem;
+  justify-self: end;
+}
+
+/* ── Board (steps grid + classification bands) ──────────────────────── */
+
+/* Break out of .container-large so the timeline can use the full viewport
+   width (capped at 1840px on ultra-wide displays). Keeps cells from
+   feeling cramped while staying centred relative to the viewport. */
+.invest-process__board {
+  position: relative;
+  width: min(100vw, 1840px);
+  margin-left: calc((100% - min(100vw, 1840px)) / 2);
+  padding-left: clamp(1.25rem, 3vw, 3.5rem);
+  padding-right: clamp(1.25rem, 3vw, 3.5rem);
+  box-sizing: border-box;
+}
+
+.invest-process__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 0;
+  border: 1px solid rgba(13, 15, 20, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -40px rgba(60, 22, 5, 0.4);
+}
+
+.invest-process__step {
+  --shade-bg: #fde2d2;
+  --shade-text: #1a1d24;
+  --shade-muted: #4b4f57;
+  --shade-marker: #c14a14;
+  --shade-pill: rgba(144, 58, 16, 0.1);
+  position: relative;
+  padding: 1.5rem 1.1rem 1.75rem;
+  background-color: var(--shade-bg);
+  color: var(--shade-text);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-height: 26rem;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 0.3s ease;
+}
+
+.invest-process__step + .invest-process__step {
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.invest-process__step:hover {
+  transform: translateY(-4px);
+}
+
+/* Heat gradient — perceptual cream → brand orange → dark roast */
+.invest-process__step:nth-child(1)  { --shade-bg: #fde9da; --shade-marker: #c14a14; --shade-pill: rgba(193, 74, 20, 0.12); }
+.invest-process__step:nth-child(2)  { --shade-bg: #fbd2b8; --shade-marker: #b8410f; --shade-pill: rgba(184, 65, 15, 0.16); }
+.invest-process__step:nth-child(3)  { --shade-bg: #f6b48a; --shade-marker: #952f08; --shade-pill: rgba(149, 47, 8, 0.18); }
+.invest-process__step:nth-child(4)  { --shade-bg: #ef8a55; --shade-marker: #6e1f00; --shade-pill: rgba(110, 31, 0, 0.18); }
+.invest-process__step:nth-child(5)  { --shade-bg: #eb7036; --shade-text: #fff5ed; --shade-muted: rgba(255, 245, 237, 0.86); --shade-marker: #fff; --shade-pill: rgba(255, 255, 255, 0.16); }
+.invest-process__step:nth-child(6)  { --shade-bg: #e25f24; --shade-text: #fff5ed; --shade-muted: rgba(255, 245, 237, 0.86); --shade-marker: #fff; --shade-pill: rgba(255, 255, 255, 0.16); }
+.invest-process__step:nth-child(7)  { --shade-bg: #c14a14; --shade-text: #fff5ed; --shade-muted: rgba(255, 245, 237, 0.84); --shade-marker: #ffd6c0; --shade-pill: rgba(255, 255, 255, 0.14); }
+.invest-process__step:nth-child(8)  { --shade-bg: #94380e; --shade-text: #fff0e3; --shade-muted: rgba(255, 240, 227, 0.82); --shade-marker: #ffb98d; --shade-pill: rgba(255, 255, 255, 0.12); }
+.invest-process__step:nth-child(9)  { --shade-bg: #5d2208; --shade-text: #ffe5d0; --shade-muted: rgba(255, 229, 208, 0.78); --shade-marker: #ff9c64; --shade-pill: rgba(255, 255, 255, 0.1); }
+
+.invest-process__step-marker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--_typography---font-styles--body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--shade-marker);
+}
+
+.invest-process__step-bullet {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: currentColor;
+  flex-shrink: 0;
+}
+
+.invest-process__step-title {
+  margin: 0.1rem 0 0.4rem;
+  font-family: var(--_typography---font-styles--heading);
+  font-size: clamp(1.05rem, 1.35vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--shade-text);
+}
+
+.invest-process__step-body {
+  margin: 0;
+  font-family: var(--_typography---font-styles--body);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--shade-muted);
+}
+
+.invest-process__step-list {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.invest-process__step-list li {
+  font-family: var(--_typography---font-styles--body);
+  font-size: 0.78125rem;
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--shade-text);
+}
+
+/* Mobile-only chip set, hidden on desktop */
+.invest-process__chips {
+  display: none;
+}
+
+/* ── Classification bands (desktop) ─────────────────────────────────── */
+
+.invest-process__bands {
+  margin-top: 1.2rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.invest-process__band {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  position: relative;
+}
+
+.invest-process__band-segment {
+  position: relative;
+  padding: 0.55rem 0.5rem 0.6rem;
+  font-family: var(--_typography---font-styles--body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #0d0f14;
+}
+
+/* Top band: AI Augmented (1–4) | AI Assisted (5–7) | Human Supervised (8–9) */
+.invest-process__band-segment--ai-augmented      { grid-column: span 4; background: rgba(193, 74, 20, 0.08); color: #6e1f00; }
+.invest-process__band-segment--ai-assisted       { grid-column: span 3; background: rgba(238, 95, 25, 0.18); color: #6e1f00; }
+.invest-process__band-segment--human-supervised  { grid-column: span 2; background: rgba(94, 33, 6, 0.18); color: #2a0c00; }
+
+/* Bottom band: Human Supervised (1–7) | AI Enhanced (8–9) */
+.invest-process__band-segment--human-supervised-wide { grid-column: span 7; background: rgba(13, 15, 20, 0.05); color: #1a1d24; }
+.invest-process__band-segment--ai-enhanced           { grid-column: span 2; background: rgba(238, 95, 25, 0.22); color: #6e1f00; }
+
+.invest-process__band-segment::before,
+.invest-process__band-segment::after {
+  content: "";
+  position: absolute;
+  top: -0.45rem;
+  width: 1px;
+  height: 0.35rem;
+  background-color: rgba(13, 15, 20, 0.35);
+}
+
+.invest-process__band-segment::before { left: 0; }
+.invest-process__band-segment::after  { right: 0; }
+
+.invest-process__band-segment:first-child::before,
+.invest-process__band-segment:last-child::after {
+  display: none;
+}
+
+/* ── Reveal animation ───────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: no-preference) {
+  .invest-process__step {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    animation: invest-process-step-in 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+  .invest-process__step:nth-child(1) { animation-delay: 0.05s; }
+  .invest-process__step:nth-child(2) { animation-delay: 0.12s; }
+  .invest-process__step:nth-child(3) { animation-delay: 0.19s; }
+  .invest-process__step:nth-child(4) { animation-delay: 0.26s; }
+  .invest-process__step:nth-child(5) { animation-delay: 0.33s; }
+  .invest-process__step:nth-child(6) { animation-delay: 0.40s; }
+  .invest-process__step:nth-child(7) { animation-delay: 0.47s; }
+  .invest-process__step:nth-child(8) { animation-delay: 0.54s; }
+  .invest-process__step:nth-child(9) { animation-delay: 0.61s; }
+
+  @keyframes invest-process-step-in {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+@media screen and (max-width: 1199px) {
+  .invest-process__step {
+    padding: 1.25rem 0.85rem 1.4rem;
+    min-height: 24rem;
+  }
+
+  .invest-process__step-body,
+  .invest-process__step-list li {
+    font-size: 0.75rem;
+  }
+
+  .invest-process__band-segment {
+    font-size: 0.625rem;
+    letter-spacing: 0.15em;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .invest-process__header {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .invest-process__lede {
+    justify-self: start;
+  }
+
+  /* Let the carousel run edge-to-edge — kill the board's side padding
+     so cards can flush against the viewport. */
+  .invest-process__board {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Horizontal flick-through carousel. Cards keep their desktop
+     heat-shaded backgrounds, share edges (no gap), and snap to start
+     as you swipe. */
+  .invest-process__steps {
+    display: flex;
+    flex-direction: row;
+    grid-template-columns: none;
+    gap: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0 1.25rem;
+    scroll-padding-left: 1.25rem;
+  }
+
+  .invest-process__steps::-webkit-scrollbar {
+    display: none;
+  }
+
+  .invest-process__step {
+    flex: 0 0 calc(100vw - 4rem);
+    scroll-snap-align: start;
+    min-height: 28rem;
+    padding: 1.6rem 1.4rem 1.7rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .invest-process__step + .invest-process__step {
+    border-left: 1px solid rgba(13, 15, 20, 0.08);
+  }
+
+  /* Dark cards (5–9) need a lighter divider for visibility */
+  .invest-process__step:nth-child(n+6) {
+    border-left-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .invest-process__step:hover {
+    transform: none;
+  }
+
+  .invest-process__step-title {
+    font-size: 1.35rem;
+    line-height: 1.1;
+  }
+
+  .invest-process__step-body,
+  .invest-process__step-list li {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  /* Anchor the chips to the bottom of each (stretched) card so the
+     row of pills lines up across the carousel as you flick. */
+  .invest-process__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: 0.85rem;
+  }
+
+  .invest-process__chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.7rem;
+    font-family: var(--_typography---font-styles--body);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 0;
+    background-color: var(--shade-pill);
+    color: var(--shade-text);
+  }
+
+  .invest-process__bands {
+    display: none;
+  }
+
+  /* Subtle swipe affordance below the carousel */
+  .invest-process__board::after {
+    content: "Swipe to explore the 9 steps";
+    display: block;
+    margin: 0.85rem 1.25rem 0;
+    font-family: var(--_typography---font-styles--body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(13, 15, 20, 0.5);
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .invest-process__step {
+    flex-basis: calc(100vw - 3rem);
+    padding: 1.4rem 1.2rem 1.5rem;
+    min-height: 26rem;
+  }
+
+  .invest-process__step-title {
+    font-size: 1.25rem;
+  }
+
+  .invest-process__step-body,
+  .invest-process__step-list li {
+    font-size: 0.85rem;
+  }
+}

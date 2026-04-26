@@ -11,11 +11,13 @@
   var FILL_PRIMARY = '#FFFDFB';
   var FILL_OPERATIONAL = '#94989E';
 
-  // SVG coordinate thresholds (viewBox 0 0 2465 1395)
-  var GCC_X_MIN = 590;
-  var GCC_Y_MIN = 280;
-  var GCC_X_MAX = 850;
-  var GCC_Y_MAX = 700;
+  // SVG coordinate thresholds (viewBox 0 0 2465 1395).
+  // GCC / Arab-state paths cluster in the lower-middle of the artwork
+  // (Saudi Arabia, UAE, Qatar, Oman, Israel/Jordan, Egypt, etc.).
+  var GCC_X_MIN = 580;
+  var GCC_Y_MIN = 1000;
+  var GCC_X_MAX = 2000;
+  var GCC_Y_MAX = 1395;
 
   var regionLabels = {
     primary: 'United Kingdom & Ireland',

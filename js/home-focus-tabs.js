@@ -23,7 +23,7 @@
   if (!tabs.length || tabs.length !== panels.length) return;
 
   function isCarouselLayout() {
-    return !mqDesktop.matches;
+    return false;
   }
 
   function playViewportReveal() {
