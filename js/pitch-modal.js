@@ -53,7 +53,7 @@
       '  <button type="button" class="pitch-modal__close" data-pitch-modal-close aria-label="Close">×</button>',
       '  <p class="pitch-modal__eyebrow">Pitch to the team</p>',
       '  <h2 class="pitch-modal__title" id="pitch-modal-title">Tell us about your company.</h2>',
-      '  <p class="pitch-modal__lede">Founders with a live MVP or early revenue: we respond within 5 working days. Pro Bono Framework entry is free.</p>',
+      '  <p class="pitch-modal__lede">Founders with a live MVP or early revenue: we respond within 5 working days.</p>',
       '  <form class="pitch-modal__form" novalidate>',
       '    <div class="pitch-modal__success" role="status" aria-live="polite">',
       '      <div class="pitch-modal__success-mark" aria-hidden="true">',
