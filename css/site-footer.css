@@ -52,15 +52,15 @@
 .site-footer__headline {
   margin: 0 0 2.5rem;
   font-family: var(--_typography---font-styles--heading), Arial, sans-serif;
-  font-size: clamp(2.75rem, 6.5vw, 5.75rem);
-  line-height: 1.02;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.05;
   font-weight: 400;
   letter-spacing: -0.01em;
 }
 
 .site-footer__headline-light,
 .site-footer__headline-accent {
-  display: block;
+  display: inline;
 }
 
 .site-footer__headline-light {
@@ -72,11 +72,18 @@
 }
 
 .site-footer__body {
-  max-width: 32rem;
+  max-width: 48rem;
   margin: 0 0 3rem;
-  font-size: 1.0625rem;
-  line-height: 1.55;
+  font-size: 1.125rem;
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.78);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.site-footer__body p {
+  margin: 0;
 }
 
 .site-footer__actions {
