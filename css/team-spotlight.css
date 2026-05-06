@@ -26,10 +26,9 @@
 /* ── Section header ─────────────────────────────────────────────────── */
 
 .team-spotlight__header {
-  display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-  gap: 2rem 4rem;
-  align-items: end;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
   margin: 0 0 3.25rem;
 }
 
@@ -60,7 +59,7 @@
 
 .team-spotlight__lede {
   margin: 0;
-  align-self: end;
+  max-width: 44rem;
   font-family: var(--_typography---font-styles--body);
   font-size: clamp(0.95rem, 1.15vw, 1.0625rem);
   line-height: 1.55;
@@ -103,6 +102,7 @@
   position: absolute;
   top: 1.15rem;
   left: 1.15rem;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -129,6 +129,7 @@
   left: 1.15rem;
   right: 1.15rem;
   bottom: 1.15rem;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -366,7 +367,6 @@
 
 @media screen and (max-width: 991px) {
   .team-spotlight__header {
-    grid-template-columns: 1fr;
     gap: 1.2rem;
     margin-bottom: 2.2rem;
   }
