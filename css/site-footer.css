@@ -1,32 +1,10 @@
 .site-footer {
   position: relative;
   overflow: hidden;
-  background-color: #0b111d;
-  color: #fff;
+  background-color: var(--_primitives---brand--background-tan, #fdf4e6);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%230c0c0c' fill-opacity='0.08'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  color: #0b111d;
   isolation: isolate;
-}
-
-.site-footer::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(120% 90% at 100% 0%, rgba(238, 95, 25, 0.18) 0%, rgba(238, 95, 25, 0.05) 30%, transparent 60%),
-    radial-gradient(80% 60% at 100% 100%, rgba(238, 95, 25, 0.06) 0%, transparent 60%),
-    linear-gradient(135deg, #070b14 0%, #0b111d 60%, #1a1208 100%);
-  z-index: -2;
-}
-
-.site-footer::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>");
-  background-size: 200px 200px;
-  opacity: 0.18;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: -1;
 }
 
 .site-footer__inner {
@@ -46,7 +24,7 @@
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(11, 17, 29, 0.6);
 }
 
 .site-footer__headline {
@@ -64,7 +42,7 @@
 }
 
 .site-footer__headline-light {
-  color: #fff;
+  color: #0b111d;
 }
 
 .site-footer__headline-accent {
@@ -76,7 +54,7 @@
   margin: 0 0 3rem;
   font-size: 1.125rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(11, 17, 29, 0.78);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -117,7 +95,7 @@
 
 .site-footer__btn--ghost {
   padding: 0.95rem 0.25rem;
-  color: #fff;
+  color: #0b111d;
   background: transparent;
 }
 
@@ -128,7 +106,7 @@
 .site-footer__divider {
   height: 1px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.18);
+  background-color: rgba(11, 17, 29, 0.18);
   margin: 0;
 }
 
@@ -161,7 +139,7 @@
 .site-footer__nav-link {
   font-size: 0.9375rem;
   font-weight: 500;
-  color: #fff;
+  color: #0b111d;
   text-decoration: underline;
   text-underline-offset: 0.3em;
   text-decoration-thickness: 1px;
@@ -175,7 +153,7 @@
 .site-footer__copyright {
   margin: 0;
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(11, 17, 29, 0.6);
   text-align: right;
 }
 
