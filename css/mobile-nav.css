@@ -1,0 +1,25 @@
+/* Mobile navigation overrides — applied below the medium collapse breakpoint */
+
+@media screen and (max-width: 991px) {
+  .navbar2_menu,
+  .navbar2_menu.is-page-height-tablet {
+    background-color: #0b111d;
+    border-bottom-color: rgba(253, 244, 230, 0.12);
+    justify-content: flex-start;
+    padding: 1.5rem 1.5rem 6.5rem;
+  }
+
+  .navbar2_menu .navbar2_link,
+  .navbar2_menu .navbar2_dropdown-link {
+    color: #fdf4e6;
+    text-align: left;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .navbar2_menu-dropdown {
+    align-items: flex-start;
+    width: 100%;
+  }
+}
