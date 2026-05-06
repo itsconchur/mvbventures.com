@@ -1,7 +1,7 @@
 .site-footer {
   position: relative;
   overflow: hidden;
-  background-color: #0a0a0a;
+  background-color: #0b111d;
   color: #fff;
   isolation: isolate;
 }
@@ -13,7 +13,7 @@
   background:
     radial-gradient(120% 90% at 100% 0%, rgba(238, 95, 25, 0.18) 0%, rgba(238, 95, 25, 0.05) 30%, transparent 60%),
     radial-gradient(80% 60% at 100% 100%, rgba(238, 95, 25, 0.06) 0%, transparent 60%),
-    linear-gradient(135deg, #050505 0%, #111 60%, #1a1208 100%);
+    linear-gradient(135deg, #070b14 0%, #0b111d 60%, #1a1208 100%);
   z-index: -2;
 }
 

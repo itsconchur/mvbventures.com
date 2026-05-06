@@ -1,5 +1,6 @@
 .section_founder-benefits {
-  background-color: var(--color-scheme-1--background, #fdf4e6);
+  background-color: var(--_primitives---brand--orange, #ee5f19);
+  color: #0b111d;
   position: relative;
   overflow: hidden;
 }
@@ -41,14 +42,14 @@
     top: 50%;
     width: 100vw;
     height: 1px;
-    border-top: 2px dashed rgba(0, 0, 0, 0.3);
+    border-top: 2px dashed rgba(11, 17, 29, 0.45);
     z-index: 0;
   }
 }
 
 .founder-benefits__hero-box {
-  background-color: var(--_primitives---brand--orange, #ee5f19);
-  color: var(--_primitives---colors--white, #fff);
+  background-color: #0b111d;
+  color: #fdf4e6;
   width: 100%;
   max-width: 300px;
   aspect-ratio: 1;
@@ -99,22 +100,22 @@
     content: '';
     position: absolute;
     left: -2rem;
-    top: 0.6rem; /* Align with the center of the marker */
+    top: 0.6rem;
     width: 2rem;
     height: 1px;
-    border-top: 2px dashed rgba(0, 0, 0, 0.3);
+    border-top: 2px dashed rgba(11, 17, 29, 0.45);
     z-index: 1;
   }
-  
+
   /* Vertical line connecting to the next item */
   .founder-benefits__item:not(:last-child)::after {
     content: '';
     position: absolute;
     left: -2rem;
     top: 0.6rem;
-    bottom: -2.6rem; /* Extends down to the next item's marker (gap is 2rem, plus 0.6rem offset) */
+    bottom: -2.6rem;
     width: 1px;
-    border-left: 2px dashed rgba(0, 0, 0, 0.3);
+    border-left: 2px dashed rgba(11, 17, 29, 0.45);
     z-index: 1;
   }
 }
@@ -123,7 +124,7 @@
   flex: 0 0 1.2rem;
   width: 1.2rem;
   height: 1.2rem;
-  background-color: var(--_primitives---brand--orange, #ee5f19);
+  background-color: #0b111d;
   margin-top: 0;
   z-index: 2;
 }
@@ -136,12 +137,12 @@
   margin: -0.2rem 0 0.5rem 0;
   font-size: 1.25rem;
   font-weight: 500;
-  color: var(--color-scheme-1--text, #000);
+  color: #0b111d;
 }
 
 .founder-benefits__item-text {
   margin: 0;
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--_primitives---colors--neutral-dark, #444);
+  color: rgba(11, 17, 29, 0.82);
 }

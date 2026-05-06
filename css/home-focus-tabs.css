@@ -1,7 +1,7 @@
 /* Home — Our Thesis tabbed section (custom, outside Webflow export) */
 
 .section_focus-tabs {
-  background-color: #0a0a0a;
+  background-color: #0b111d;
   color: #fff;
 }
 
@@ -309,7 +309,7 @@
     min-width: 0;
     min-height: 3.25rem;
     padding: 0.85rem 1.1rem;
-    background-color: #0a0a0a;
+    background-color: #0b111d;
   }
 
   .focus-tabs__tab + .focus-tabs__tab {

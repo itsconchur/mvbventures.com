@@ -1,7 +1,7 @@
 /* Home — Fund I Targets (prospectus block, sits above footer) */
 
 .section_fund-targets {
-  background-color: #000;
+  background-color: #0b111d;
   color: #f5f1ea;
   position: relative;
   overflow: hidden;
@@ -90,13 +90,13 @@
   flex-direction: column;
   gap: 0.6rem;
   min-height: 11.5rem;
-  background-color: #000;
+  background-color: #0b111d;
   border: 1px solid rgba(245, 241, 234, 0.18);
   transition: background-color 0.35s ease;
 }
 
 .fund-targets__cell:hover {
-  background-color: #0a0a0a;
+  background-color: #131a2a;
 }
 
 .fund-targets__cell-label {
@@ -134,7 +134,7 @@
 }
 
 .fund-targets__card {
-  background-color: #0d0e10;
+  background-color: #131a2a;
   border: 1px solid rgba(245, 241, 234, 0.14);
   padding: 2.25rem 2.25rem 2.5rem;
   display: flex;
