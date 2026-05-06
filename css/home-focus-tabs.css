@@ -9,6 +9,23 @@
   margin: 0 0 2rem;
 }
 
+.focus-tabs__heading-main {
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  gap: 1.25rem 3rem;
+  align-items: start;
+}
+
+.focus-tabs__lede {
+  margin: 0;
+  font-family: var(--_typography---font-styles--body);
+  font-size: clamp(1.0625rem, 1.35vw, 1.1875rem);
+  line-height: 1.45;
+  color: #b8b8b8;
+  max-width: 40ch;
+  padding-top: 0.35em;
+}
+
 .focus-tabs__eyebrow {
   margin: 0 0 0.85rem;
   font-family: var(--_typography---font-styles--body);
@@ -265,6 +282,16 @@
 @media screen and (max-width: 991px) {
   .focus-tabs__heading-row {
     margin-bottom: 1.5rem;
+  }
+
+  .focus-tabs__heading-main {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .focus-tabs__lede {
+    max-width: none;
+    padding-top: 0;
   }
 
   .focus-tabs__panel[aria-hidden="true"] {
