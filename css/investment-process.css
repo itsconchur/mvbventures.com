@@ -1,7 +1,7 @@
 /* Home — Investment Process (9-step heat-graded process map) */
 
 .section_investment-process {
-  background-color: #fdf4e6;
+  background-color: #ffffff;
   color: #1a1d24;
   position: relative;
   overflow: hidden;
@@ -346,12 +346,13 @@
     justify-self: start;
   }
 
-  /* Let the carousel run edge-to-edge — kill the board's side padding
-     so cards can flush against the viewport. The mobile carousel scrolls
-     inside .invest-process__steps, so undo the desktop board breakout
-     and overflow rules to avoid nested scroll containers. */
+  /* Let the carousel run edge-to-edge — break out of the ancestor
+     .padding-global (5% horizontal padding) on the right so cards can
+     flush against the viewport edge and the next card peeks clearly.
+     The mobile carousel scrolls inside .invest-process__steps, so undo
+     the desktop board overflow rules to avoid nested scroll containers. */
   .invest-process__board {
-    margin-right: 0;
+    margin-right: -5vw;
     overflow-x: visible;
     overflow-y: visible;
     padding-left: 0;
@@ -376,7 +377,7 @@
     border: none;
     border-radius: 0;
     box-shadow: none;
-    padding: 0 1.25rem;
+    padding: 0 0 0 1.25rem;
     scroll-padding-left: 1.25rem;
   }
 
@@ -385,7 +386,7 @@
   }
 
   .invest-process__step {
-    flex: 0 0 calc(100vw - 4rem);
+    flex: 0 0 calc(100vw - 5rem);
     scroll-snap-align: start;
     min-height: 28rem;
     padding: 1.6rem 1.4rem 1.7rem;
@@ -456,7 +457,7 @@
 
 @media screen and (max-width: 479px) {
   .invest-process__step {
-    flex-basis: calc(100vw - 3rem);
+    flex-basis: calc(100vw - 4rem);
     padding: 1.4rem 1.2rem 1.5rem;
     min-height: 26rem;
   }

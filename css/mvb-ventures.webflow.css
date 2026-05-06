@@ -135,6 +135,11 @@ body {
   color: var(--color-scheme-1--text);
   font-size: 1rem;
   line-height: 1.5;
+  overflow-x: clip;
+}
+
+html {
+  overflow-x: clip;
 }
 
 h1 {
@@ -6159,7 +6164,11 @@ figcaption {
   }
 
   .hero-single__headline {
-    font-size: clamp(1rem, 7vw, 3.875rem);
+    font-size: clamp(2rem, 7vw, 3.875rem);
+  }
+
+  .hero-single__headline-line {
+    white-space: normal;
   }
 
   .hero-single__dek {
