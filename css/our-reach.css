@@ -2,9 +2,23 @@
 
 .section_our-reach {
   background-color: #0b111d;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(245, 241, 234, 0.82);
   overflow: hidden;
   position: relative;
+}
+
+.section_our-reach::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 8% 12%, rgba(238, 95, 25, 0.06), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section_our-reach .padding-section-large {
+  position: relative;
+  z-index: 1;
 }
 
 .section_our-reach .our-reach__inner {
@@ -15,16 +29,17 @@
 }
 
 .our-reach__content {
-  max-width: 32rem;
+  max-width: 34rem;
   position: relative;
   z-index: 2;
 }
 
 .our-reach__heading {
   font-family: var(--_typography---font-styles--heading);
-  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-size: clamp(2.4rem, 5vw, 4.25rem);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1;
+  letter-spacing: -0.015em;
   margin: 0 0 1.5rem;
   color: #fff;
 }
@@ -32,8 +47,9 @@
 .our-reach__copy {
   margin: 0;
   font-family: var(--_typography---font-styles--body);
-  font-size: 1rem;
-  line-height: 1.65;
+  font-size: clamp(0.95rem, 1.2vw, 1.0625rem);
+  line-height: 1.6;
+  color: rgba(245, 241, 234, 0.72);
 }
 
 .our-reach__copy + .our-reach__copy {
@@ -152,10 +168,6 @@
 }
 
 @media screen and (max-width: 479px) {
-  .our-reach__copy {
-    font-size: 0.9375rem;
-  }
-
   .our-reach__map-wrap {
     min-height: 440px;
   }

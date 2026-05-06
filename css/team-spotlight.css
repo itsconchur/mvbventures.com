@@ -78,13 +78,6 @@
   box-shadow: 0 28px 60px -36px rgba(12, 12, 12, 0.28);
 }
 
-.team-spotlight__card::before {
-  content: "";
-  position: absolute;
-  inset: 0.6rem;
-  border: 1px solid rgba(12, 12, 12, 0.06);
-  pointer-events: none;
-}
 
 .team-spotlight__media {
   position: relative;
@@ -138,6 +131,8 @@
   bottom: 1.15rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 0.4rem;
   padding: 1rem 1.15rem 0.95rem;
   background-color: rgba(255, 255, 255, 0.94);
@@ -169,6 +164,7 @@
 .team-spotlight__content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 1.5rem;
   padding: 2.6rem 2.6rem 2.4rem;
 }
@@ -379,12 +375,21 @@
     grid-template-columns: 1fr;
   }
 
+  /* Drop the fixed aspect ratio so the stat box can sit below the photo
+     in normal flow instead of overlaying the face. */
   .team-spotlight__media {
-    aspect-ratio: 16 / 11;
+    aspect-ratio: auto;
   }
 
   .team-spotlight__photo {
-    object-position: center 22%;
+    aspect-ratio: 4 / 5;
+    height: auto;
+    object-position: center 18%;
+  }
+
+  .team-spotlight__media-stat {
+    position: static;
+    margin: 1rem 1.15rem 1.15rem;
   }
 
   .team-spotlight__content {
@@ -393,7 +398,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .team-spotlight__card::before { inset: 0.4rem; }
   .team-spotlight__content { padding: 1.5rem 1.3rem 1.6rem; gap: 1.1rem; }
 
   .team-spotlight__stats {
@@ -403,5 +407,5 @@
 
   .team-spotlight__cta-row { gap: 0.7rem 1rem; }
   .team-spotlight__btn { width: 100%; }
-  .team-spotlight__link { width: 100%; justify-content: flex-start; }
+  .team-spotlight__link { width: 100%; justify-content: center; }
 }
