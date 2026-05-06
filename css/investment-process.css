@@ -38,11 +38,12 @@
 .invest-process__heading {
   margin: 0;
   font-family: var(--_typography---font-styles--heading);
-  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-size: clamp(1.75rem, 6.5vw, 4.5rem);
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.015em;
   color: #0d0f14;
+  white-space: nowrap;
 }
 
 .invest-process__lede {
@@ -57,16 +58,27 @@
 
 /* ── Board (steps grid + classification bands) ──────────────────────── */
 
-/* Break out of .container-large so the timeline can use the full viewport
-   width (capped at 1840px on ultra-wide displays). Keeps cells from
-   feeling cramped while staying centred relative to the viewport. */
+/* Left edge stays flush with the heading (.container-large's left edge);
+   the right edge breaks out all the way to the viewport so the timeline
+   can run horizontally off-screen and be scrolled. Steps and bands sit
+   inside the same scroll container so they pan in sync. */
 .invest-process__board {
+  --invest-process-step-width: clamp(16rem, 18vw, 20rem);
   position: relative;
-  width: min(100vw, 1840px);
-  margin-left: calc((100% - min(100vw, 1840px)) / 2);
-  padding-left: clamp(1.25rem, 3vw, 3.5rem);
-  padding-right: clamp(1.25rem, 3vw, 3.5rem);
-  box-sizing: border-box;
+  margin-right: calc(50% - 50vw);
+  padding: 0;
+  overflow-x: auto;
+  overflow-y: visible;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-padding-right: 1.25rem;
+}
+
+.invest-process__board::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .invest-process__steps {
@@ -74,12 +86,13 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
+  grid-template-columns: repeat(9, var(--invest-process-step-width));
   gap: 0;
   border: 1px solid rgba(13, 15, 20, 0.06);
   border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 30px 60px -40px rgba(60, 22, 5, 0.4);
+  width: max-content;
 }
 
 .invest-process__step {
@@ -184,11 +197,12 @@
   margin-top: 1.2rem;
   display: grid;
   gap: 0.55rem;
+  width: max-content;
 }
 
 .invest-process__band {
   display: grid;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
+  grid-template-columns: repeat(9, var(--invest-process-step-width));
   position: relative;
 }
 
@@ -229,6 +243,50 @@
 .invest-process__band-segment:first-child::before,
 .invest-process__band-segment:last-child::after {
   display: none;
+}
+
+/* ── Scroll affordance ──────────────────────────────────────────────── */
+
+.invest-process__scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  font-family: var(--_typography---font-styles--body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(13, 15, 20, 0.55);
+}
+
+.invest-process__scroll-hint-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.05rem;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--_primitives---brand--orange);
+}
+
+.invest-process__scroll-hint-chev {
+  display: inline-block;
+  opacity: 0.25;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .invest-process__scroll-hint-chev {
+    animation: invest-process-scroll-wave 1.6s ease-in-out infinite;
+  }
+  .invest-process__scroll-hint-chev:nth-child(1) { animation-delay: 0s; }
+  .invest-process__scroll-hint-chev:nth-child(2) { animation-delay: 0.18s; }
+  .invest-process__scroll-hint-chev:nth-child(3) { animation-delay: 0.36s; }
+
+  @keyframes invest-process-scroll-wave {
+    0%, 100% { opacity: 0.25; transform: translateX(0); }
+    50%      { opacity: 1;    transform: translateX(0.25rem); }
+  }
 }
 
 /* ── Reveal animation ───────────────────────────────────────────────── */
@@ -289,8 +347,13 @@
   }
 
   /* Let the carousel run edge-to-edge — kill the board's side padding
-     so cards can flush against the viewport. */
+     so cards can flush against the viewport. The mobile carousel scrolls
+     inside .invest-process__steps, so undo the desktop board breakout
+     and overflow rules to avoid nested scroll containers. */
   .invest-process__board {
+    margin-right: 0;
+    overflow-x: visible;
+    overflow-y: visible;
     padding-left: 0;
     padding-right: 0;
   }
@@ -303,6 +366,7 @@
     flex-direction: row;
     grid-template-columns: none;
     gap: 0;
+    width: auto;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
@@ -381,17 +445,12 @@
     display: none;
   }
 
-  /* Subtle swipe affordance below the carousel */
-  .invest-process__board::after {
-    content: "Swipe to explore the 9 steps";
-    display: block;
-    margin: 0.85rem 1.25rem 0;
-    font-family: var(--_typography---font-styles--body);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(13, 15, 20, 0.5);
+  /* Mobile uses the standalone .invest-process__scroll-hint element below
+     the board (rendered for both mobile and desktop). Indent it inline
+     with the carousel's edge padding. */
+  .invest-process__scroll-hint {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
   }
 }
 
